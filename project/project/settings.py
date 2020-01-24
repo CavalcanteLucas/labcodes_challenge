@@ -26,6 +26,7 @@ SECRET_KEY = 'force your key here'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
+DEBUG = True
 SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = []

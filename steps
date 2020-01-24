@@ -1,0 +1,7 @@
+> created virtualenv
+> installed requirements
+ - and subdependencies
+> changing `env.example` into `.env`
+> postgres (maybe not required)
+> heroku (maybe not required)
+> docker 
