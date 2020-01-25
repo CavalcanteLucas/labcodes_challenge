@@ -8,6 +8,8 @@ import { apiMiddleware } from 'react-redux-api-tools';
 import Routes from './routes';
 import rootReducer from './store/reducers';
 
+import { Link } from 'react-router-dom';
+
 import 'whatwg-fetch';
 import '../scss/index.scss';
 
@@ -19,9 +21,10 @@ const store = createStore(rootReducer, applyMiddleware(thunk, apiMiddleware));
 class App extends React.Component {
   render () {
     return (
-      <div id ="app">
-        <aside>
-        </aside>
+      <div id ="react-app">
+        <header>
+          <h1 class="logo">STATIONERY SHOP</h1>
+        </header>
         <main>
         <Provider store={store}>
           <Routes />

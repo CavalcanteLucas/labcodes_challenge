@@ -1,7 +1,84 @@
-html, body #root {
-  height: 100%
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+header {
+    /* top-bar */
+
+    position: absolute;
+    height: 84px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    /* Coral / Coral 40 --> Default */
+
+    background: #ec6056;
 }
 
 body {
-  background: #EAEFF3;
+    background: #eaeff3;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    position: absolute;
+    width: 215px;
+    height: 48px;
+    left: 260px;
+    top: 132px;
+
+    /* H1 - Big title */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 120%;
+    /* identical to box height, or 48px */
+
+    display: flex;
+    align-items: center;
+
+    /* Mineral Dark / Mineral 80 */
+
+    color: #2e3942;
+}
+
+
+.logo {
+    /* logotype */
+
+    position: absolute;
+    width: 275px;
+    height: 34px;
+    left: 72px;
+    top: 13px;
+
+    /* Logotype */
+
+    font-family: Bungee;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 120%;
+    /* identical to box height, or 34px */
+
+    display: flex;
+    align-items: center;
+
+    /* Mineral Light / White */
+
+    color: #ffffff;
 }

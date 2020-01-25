@@ -33,7 +33,7 @@ class ProductsList extends React.Component {
         <Container>
           <Row>
             <Col>
-              <h1 style={ h1Style }>Product List</h1>
+              <h1>Product List</h1>
             </Col>
           </Row>
 
