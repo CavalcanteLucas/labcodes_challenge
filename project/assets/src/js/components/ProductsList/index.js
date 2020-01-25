@@ -14,6 +14,7 @@ class ProductsList extends React.Component {
   }
 
   render(){
+
     const { isLoading, products } = this.props;
 
     if (isLoading) {
@@ -27,23 +28,45 @@ class ProductsList extends React.Component {
     }
 
     return (
-      <Container>
-        <Row>
-          <Col>
-            <h1>Products List</h1>
-          </Col>
-        </Row>
-
-        {products.map(product => (
-          <Row key={product.code}>
+      <div style={ productListBackground }>
+        <Container>
+          <Row>
             <Col>
-              <Product {...product}/>
+              <h1 style={ h1Style }>Product List</h1>
             </Col>
           </Row>
-        ))}
-      </Container>
+
+          {products.map(product => (
+            <Row key={product.code}>
+              <Col>
+                <Product {...product}/>
+              </Col>
+            </Row>
+          ))}
+          </Container>
+        </div>
     );
   }
+}
+
+const productListBackground = {
+  backgroundColor: '#EAEFF3'
+}
+
+const h1Style = {
+  fontFamily: 'Lato',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '40px',
+  lineHeight: '120%',
+  display: 'flex',
+  // alignItems: 'center',
+  // position: 'absolute',
+  width: '215px',
+  height: '48px',
+  left: '260px',
+  top: '132px',
+  color: '#2E3942',
 }
 
 const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, products: state.products.items });

@@ -6,7 +6,7 @@ export default function Product(props){
   return (
     <dl>
       <dt>Name:</dt>
-      <dd><Link to={`/${props.code}/`}>{props.name}</Link></dd>
+      <dd>{props.name}</dd>
       <dt>Code:</dt>
       <dd>{props.code}</dd>
       {props.description &&
@@ -17,6 +17,9 @@ export default function Product(props){
       }
       <dt>Available quantity:</dt>
       <dd>{props.available_quantity}</dd>
-    </dl>
+      <dt>Category:</dt>
+      <dd>{props.category}</dd>
+      <dd><Link to={`/${props.code}/`}>See Details</Link></dd>    </dl>
   );
 }
+ 

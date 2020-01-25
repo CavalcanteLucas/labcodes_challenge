@@ -49,6 +49,8 @@ class ProductsDetail extends React.Component {
                 }
                 <dt>Available quantity:</dt>
                 <dd>{product.available_quantity}</dd>
+                <dt>Category:</dt>
+                <dd>{product.category}</dd>
               </dl>
               <Link to='/'>Back to products list</Link>
             </Col>
