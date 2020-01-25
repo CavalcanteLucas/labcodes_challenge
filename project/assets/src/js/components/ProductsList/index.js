@@ -37,34 +37,18 @@ class ProductsList extends React.Component {
             </Col>
           </Row>
 
-          {products.map(product => (
+          {/* {products.map(product => (
             <Row key={product.code}>
               <Col>
                 <Product {...product}/>
               </Col>
             </Row>
-          ))}
+          ))} */}
         </Container>
         </main>
       </div>
     );
   }
-}
-
-const h1Style = {
-  fontFamily: 'Lato',
-  fontStyle: 'normal',
-  fontWeight: 'bold',
-  fontSize: '40px',
-  lineHeight: '120%',
-  display: 'flex',
-  // alignItems: 'center',
-  // position: 'absolute',
-  width: '215px',
-  height: '48px',
-  left: '260px',
-  top: '132px',
-  color: '#2E3942',
 }
 
 const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, products: state.products.items });
