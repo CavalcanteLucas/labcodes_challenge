@@ -7,6 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_('Product name'))
     available_quantity = models.IntegerField(verbose_name=_('Available quantity'))
     description = models.TextField(verbose_name=_('Description'), blank=True, default='')
+    category = models.CharField(max_length=255, blank=True, verbose_name=_('Category'))
 
     class Meta:
         verbose_name = _('Product')
