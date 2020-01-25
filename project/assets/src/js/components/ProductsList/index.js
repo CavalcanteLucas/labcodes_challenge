@@ -28,7 +28,8 @@ class ProductsList extends React.Component {
     }
 
     return (
-      <div style={ productListBackground }>
+      <div>
+        <main>
         <Container>
           <Row>
             <Col>
@@ -43,14 +44,11 @@ class ProductsList extends React.Component {
               </Col>
             </Row>
           ))}
-          </Container>
-        </div>
+        </Container>
+        </main>
+      </div>
     );
   }
-}
-
-const productListBackground = {
-  backgroundColor: '#EAEFF3'
 }
 
 const h1Style = {

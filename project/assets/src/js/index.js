@@ -11,15 +11,23 @@ import rootReducer from './store/reducers';
 import 'whatwg-fetch';
 import '../scss/index.scss';
 
+import './global.css';
+
 const store = createStore(rootReducer, applyMiddleware(thunk, apiMiddleware));
 
 
 class App extends React.Component {
   render () {
     return (
-      <Provider store={store}>
-        <Routes />
-      </Provider>
+      <div id ="app">
+        <aside>
+        </aside>
+        <main>
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+        </main>
+      </div>
     )
   }
 }
