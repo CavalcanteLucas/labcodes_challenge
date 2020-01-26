@@ -44,16 +44,12 @@ class ProductsList extends React.Component {
       // </div>
 
       <div>
-        <main>
         <Container>
-          <Row>
-            <Col>
-              <h1 className="product-list-title">Product List</h1>
-            </Col>
-            {/* <Col>
-              <h1>test</h1>
-            </Col> */}
-          </Row>
+          <div className="product-list-header">
+            <h1 className="product-list-title">Product List</h1>
+            {/* <h1 className="product-list-title">test</h1> */}
+          </div>
+          
           <productlist>
             {/* <ul>
               <li className="product-item">
@@ -75,7 +71,6 @@ class ProductsList extends React.Component {
           ))}
           </productlist>
         </Container>
-        </main>
       </div>
     );
   }

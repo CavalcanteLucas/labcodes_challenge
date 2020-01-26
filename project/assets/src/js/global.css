@@ -7,11 +7,12 @@
     box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-    height: 100%;
-}
+/* html,
+/* body, */
+/* #root */
+/* html { */
+    /* height: 80%; */
+
 
 header {
     /* top-bar */
@@ -49,7 +50,7 @@ h1.product-list-title {
     /* identical to box height, or 48px */
 
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 
     /* Mineral Dark / Mineral 80 */
 
