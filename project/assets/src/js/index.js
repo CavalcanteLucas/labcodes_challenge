@@ -20,7 +20,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk, apiMiddleware));
 class App extends React.Component {
   render () {
     return (
-      <div id ="react-app">
+      <div>
         <header>
           <div className="brand">
             <div className="group19">
@@ -33,13 +33,16 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <main>
+        <body> 
         <Provider store={store}>
           <Routes />
         </Provider>
-        </main>
+        </body>
+        <foter>
+          asdf
+        </foter>
       </div>
-    )
+    ) 
   }
 }
 

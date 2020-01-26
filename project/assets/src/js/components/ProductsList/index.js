@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import Product from './Product';
 
+import './productlist.scss';
 
 class ProductsList extends React.Component {
 
@@ -28,25 +29,51 @@ class ProductsList extends React.Component {
     }
 
     return (
+      // <div id="productlist">
+      //   <h1 className="product-list-title">Product List</h1>
+      //   <main>
+      //     <ul>
+      //       <li className="list-item">
+      //         <header>
+      //           <strong>Name: </strong>
+      //           <spam>Item Name</spam>
+      //         </header>
+      //       </li>
+      //     </ul>
+      //   </main>
+      // </div>
+
       <div>
         <main>
         <Container>
           <Row>
             <Col>
-              <h1>Product List</h1>
+              <h1 className="product-list-title">Product List</h1>
             </Col>
-            <Col>
+            {/* <Col>
               <h1>test</h1>
-            </Col>
+            </Col> */}
           </Row>
+          <productlist>
+            {/* <ul>
+              <li className="product-item">
+                <header>
+                  <p>Name</p>
+                  <div className="product-name">product name</div>
+                </header>
+                <strong>code:</strong>
+                <li className="product-category">category:</li>
+              </li>
+            </ul> */}
 
-          {/* {products.map(product => (
+          {products.map(product => (
             <Row key={product.code}>
               <Col>
                 <Product {...product}/>
               </Col>
             </Row>
-          ))} */}
+          ))}
+          </productlist>
         </Container>
         </main>
       </div>
