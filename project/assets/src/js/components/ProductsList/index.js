@@ -49,14 +49,14 @@ class ProductsList extends React.Component {
             </div>
           </div>
           
-          <div>
-          {products.map(product => (
-            <Row key={product.code}>
-              <Col>
-                <Product {...product}/>
-              </Col>
-            </Row>
-          ))}
+          <div className="product-list-body">
+            {products.map(product => (
+              <Row key={product.code}>
+                <Col>
+                  <Product {...product}/>
+                </Col>
+              </Row>
+            ))}
           </div>
         </Container>
       </div>

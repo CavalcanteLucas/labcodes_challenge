@@ -38,9 +38,6 @@ class App extends React.Component {
           <Routes />
         </Provider>
         </div>
-        <foter>
-          asdf
-        </foter>
       </div>
     ) 
   }
