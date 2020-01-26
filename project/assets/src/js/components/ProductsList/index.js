@@ -18,6 +18,22 @@ class ProductsList extends React.Component {
 
     const { isLoading, products } = this.props;
 
+    let total_items = products.length;
+    let total_items_in_stock = 0;
+    for (var i = 0; i < total_items; i++) {
+      total_items_in_stock += products[i].available_quantity;
+    }
+    console.log(total_items_in_stock)
+
+    // for (var key in dictionary) {
+    //   // check if the property/key is defined in the object itself, not in parent
+    //   if (dictionary.hasOwnProperty(key)) {           
+    //       console.log(key, dictionary[key]);
+    //   }
+    // }
+
+    console.log(products)
+
     if (isLoading) {
       return (
         <Container style={{ height: '100px' }}>
@@ -29,43 +45,18 @@ class ProductsList extends React.Component {
     }
 
     return (
-      // <div id="productlist">
-      //   <h1 className="product-list-title">Product List</h1>
-      //   <main>
-      //     <ul>
-      //       <li className="list-item">
-      //         <header>
-      //           <strong>Name: </strong>
-      //           <spam>Item Name</spam>
-      //         </header>
-      //       </li>
-      //     </ul>
-      //   </main>
-      // </div>
-
       <div>
         <Container>
           <div className="product-list-header">
             <h1 className="product-list-title">Product List</h1>
             <div className="inventory-status-container">
               <h3 className="small-title">Inventory Status</h3>
-              <h4 className="statuses">Single products: </h4>
-              <h4 className="statuses">Total items in stock: </h4>
+              <h4 className="statuses">Single products: { total_items } </h4>
+              <h4 className="statuses">Total items in stock: { total_items_in_stock } </h4>
             </div>
           </div>
           
-          <productlist>
-            {/* <ul>
-              <li className="product-item">
-                <header>
-                  <p>Name</p>
-                  <div className="product-name">product name</div>
-                </header>
-                <strong>code:</strong>
-                <li className="product-category">category:</li>
-              </li>
-            </ul> */}
-
+          <div>
           {products.map(product => (
             <Row key={product.code}>
               <Col>
@@ -73,7 +64,7 @@ class ProductsList extends React.Component {
               </Col>
             </Row>
           ))}
-          </productlist>
+          </div>
         </Container>
       </div>
     );

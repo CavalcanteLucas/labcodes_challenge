@@ -33,11 +33,11 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <body> 
+        <div> 
         <Provider store={store}>
           <Routes />
         </Provider>
-        </body>
+        </div>
         <foter>
           asdf
         </foter>
