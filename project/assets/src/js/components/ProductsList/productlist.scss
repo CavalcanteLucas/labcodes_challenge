@@ -14,9 +14,11 @@ div.product-list-header {
   display: flex;
   justify-content: space-between;
   padding-top: 116px;
+//   padding-bottom: 116px;
   //   padding-left: 0%;
-  padding-right: 10%;
+  padding-right: 5%;
   //   background: #000
+  align-items: center;
 }
 
 div.inventory-status-container {

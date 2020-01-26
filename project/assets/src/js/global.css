@@ -32,19 +32,20 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1.product-list-title {
+h1.big-title {
     /* position: absolute; */
     /* width: 215px;
     height: 48px;
-    
     top: 132px; */
+    padding-bottom: 14px;
 
     /* H1 - Big title */
     font-family: Lato;
     font-style: normal;
     font-weight: bold;
     font-size: 40px;
-    line-height: 120%;
+
+    /* line-height: 100%; */
     /* identical to box height, or 48px */
 
     /* display: flex; */

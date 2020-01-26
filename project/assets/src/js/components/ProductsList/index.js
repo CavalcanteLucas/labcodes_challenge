@@ -41,7 +41,7 @@ class ProductsList extends React.Component {
       <div>
         <Container>
           <div className="product-list-header">
-            <h1 className="product-list-title">Product List</h1>
+            <h1 className="big-title">Product List</h1>
             <div className="inventory-status-container">
               <h3 className="small-title">Inventory Status</h3>
               <h4 className="statuses">Single products: { total_items } </h4>
