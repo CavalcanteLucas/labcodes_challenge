@@ -1,23 +1,45 @@
+div.item-box {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  /* Mineral Light / White */
+
+  background: #ffffff;
+  border-radius: 8px;
+}
+
 div.product-list-header {
   display: flex;
   justify-content: space-between;
   padding-top: 116px;
-//   padding-left: 0%;
+  //   padding-left: 0%;
   padding-right: 10%;
-//   background: #000
+  //   background: #000
 }
 
 div.inventory-status-container {
-    width: 180px;
-    height: 112px;
-    // left: 926px;
-    // top: 100px;
+  width: 180px;
+  height: 112px;
+  // left: 926px;
+  // top: 100px;
 }
+
+div.code {
+  display: flex;
+  justify-content: flex-start;
+}
+
+div.category {
+    display: flex;
+    justify-content: flex-start;
+  }
 
 dt.name {
   /* Name: */
 
-  //   position: absolute;
+//   position: absolute;
   width: 47px;
   height: 19px;
   left: 16px;
@@ -41,7 +63,9 @@ dt.code {
   /* Code: P-0005 */
 
   //   position: absolute;
-  width: 98px;
+  float: left;
+
+  width: 44px;
   height: 19px;
   left: 16px;
   bottom: 45px;
@@ -64,7 +88,7 @@ dt.category {
   /* Category: Stationery */
 
   //   position: absolute;
-  width: 146px;
+  width: 72px;
   height: 19px;
   left: 16px;
   bottom: 17px;
@@ -108,6 +132,8 @@ dd.code {
   /* Code: P-0005 */
 
   //   position: absolute;
+  float: left;
+
   width: 98px;
   height: 19px;
   left: 16px;
@@ -166,7 +192,7 @@ div.detail-buttom {
 p.detail-buttom {
   /* See details */
 
-  position: absolute;
+  position: relative;
   height: 19px;
   left: 12px;
   right: 12px;
@@ -195,6 +221,25 @@ p.detail-buttom {
   /* Mineral Light / White */
 
   color: #ffffff;
+}
+
+dl.item-box {
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+}
+
+p.separator {
+
+  height: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 80px;
+
+  /* Mineral Light / Mineral 20 */
+
+  border: 1px solid #cddbe4;
 }
 
 // #productlist {

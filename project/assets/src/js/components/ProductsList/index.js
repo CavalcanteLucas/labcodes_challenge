@@ -25,13 +25,6 @@ class ProductsList extends React.Component {
     }
     console.log(total_items_in_stock)
 
-    // for (var key in dictionary) {
-    //   // check if the property/key is defined in the object itself, not in parent
-    //   if (dictionary.hasOwnProperty(key)) {           
-    //       console.log(key, dictionary[key]);
-    //   }
-    // }
-
     console.log(products)
 
     if (isLoading) {
