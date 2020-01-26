@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Bungee&display=swap");
 
 * {
     margin: 0;
@@ -11,8 +11,7 @@
 /* body, */
 /* #root */
 /* html { */
-    /* height: 80%; */
-
+/* height: 80%; */
 
 header {
     /* top-bar */
@@ -34,14 +33,13 @@ body {
 }
 
 h1.product-list-title {
-    position: absolute;
-    width: 215px;
+    /* position: absolute; */
+    /* width: 215px;
     height: 48px;
-    left: 260px;
-    top: 132px;
+    
+    top: 132px; */
 
     /* H1 - Big title */
-
     font-family: Lato;
     font-style: normal;
     font-weight: bold;
@@ -49,7 +47,7 @@ h1.product-list-title {
     line-height: 120%;
     /* identical to box height, or 48px */
 
-    display: flex;
+    /* display: flex; */
     /* align-items: center; */
 
     /* Mineral Dark / Mineral 80 */
@@ -57,3 +55,30 @@ h1.product-list-title {
     color: #2e3942;
 }
 
+h3.small-title {
+    /* H3 - Small title */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 120%;
+    /* identical to box height, or 24px */
+
+    /* Mineral Dark / Mineral 80 */
+
+    color: #2e3942;
+}
+
+h4.statuses {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+    /* Mineral Dark / Mineral 70 */
+
+    color: #414f58;
+}

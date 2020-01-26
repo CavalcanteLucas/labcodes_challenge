@@ -20,7 +20,7 @@ class ProductsList extends React.Component {
 
     if (isLoading) {
       return (
-        <Container style={{ height: '100vh' }}>
+        <Container style={{ height: '100px' }}>
           <div style={{ margin: '0 auto', top: 'calc(50% - 17px)', width: '60px', position: 'relative' }}>
             <PongSpinner />
           </div>
@@ -47,7 +47,11 @@ class ProductsList extends React.Component {
         <Container>
           <div className="product-list-header">
             <h1 className="product-list-title">Product List</h1>
-            {/* <h1 className="product-list-title">test</h1> */}
+            <div className="inventory-status-container">
+              <h3 className="small-title">Inventory Status</h3>
+              <h4 className="statuses">Single products: </h4>
+              <h4 className="statuses">Total items in stock: </h4>
+            </div>
           </div>
           
           <productlist>

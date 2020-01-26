@@ -1,9 +1,18 @@
 div.product-list-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 114px
+  display: flex;
+  justify-content: space-between;
+  padding-top: 116px;
+//   padding-left: 0%;
+  padding-right: 8%;
+//   background: #000
 }
 
+div.inventory-status-container {
+    width: 150px;
+    height: 112px;
+    // left: 926px;
+    // top: 100px;
+}
 
 dt.name {
   /* Name: */
@@ -166,10 +175,10 @@ p.detail-buttom {
   left: 150%;
 
   margin: -70px 0 0 -170px;
-//   top: 100%;
-//   top: 50%;
-//   -ms-transform: translateY(-50%);
-//   transform: translateY(-50%);
+  //   top: 100%;
+  //   top: 50%;
+  //   -ms-transform: translateY(-50%);
+  //   transform: translateY(-50%);
 
   /* Normal Button */
 
