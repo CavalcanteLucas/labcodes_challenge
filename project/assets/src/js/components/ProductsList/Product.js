@@ -6,22 +6,19 @@ import './productlist.scss'
 export default function Product(props){
   return (
     <div className="item-box">
-    <dl className="item-box">
+    <div >
+    <dl className="item-box-header">
       <dt className="name">Name:</dt>
       <dd className="name">{props.name}</dd>
-      <p className="separator"></p>
+    </dl>
+    </div>
+    <p className="separator"></p>
+    <div >
+    <dl className="item-box-body">
       <div className="code">
         <dt className="code">Code: </dt>
         <dd className="code">{props.code}</dd>
       </div>
-      {/* {props.description &&
-        <React.Fragment>
-          <dt>Description:</dt>
-          <dd>{props.description}</dd>
-        </React.Fragment>
-      } */}
-      {/* <dt>Available quantity:</dt>
-      <dd>{props.available_quantity}</dd> */}
       <div className="category">
         <dt className="category">Category:</dt>
         <dd className="category">{props.category}</dd>
@@ -32,6 +29,7 @@ export default function Product(props){
         </Link>
       </div>
     </dl>
+    </div>
     </div>
   );
 }

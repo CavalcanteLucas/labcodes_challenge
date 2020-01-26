@@ -225,12 +225,19 @@ p.detail-buttom {
   color: #ffffff;
 }
 
-dl.item-box {
+dl.item-box-header {
   padding-top: 16px;
   padding-left: 16px;
-  padding-bottom: 16px;
+//   padding-bottom: 16px;
   padding-right: 16px;
 }
+
+dl.item-box-body {
+    // padding-top: 16px;
+    padding-left: 16px;
+  //   padding-bottom: 16px;
+    padding-right: 16px;
+  }
 
 p.separator {
 
