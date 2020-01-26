@@ -26,11 +26,11 @@ export default function Product(props){
         <dt className="category">Category:</dt>
         <dd className="category">{props.category}</dd>
       </div>
-      {/* <div className="detail-buttom">
+      <div className="detail-buttom">
         <Link to={`/${props.code}/`}>
           <p className="detail-buttom">See Details</p>
         </Link>
-      </div> */}
+      </div>
     </dl>
     </div>
   );

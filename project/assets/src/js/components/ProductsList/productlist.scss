@@ -176,7 +176,7 @@ dd.category {
 
 div.detail-buttom {
   // width: 100%;
-  position: relative;
+//   position: relative;
 
   border: 0;
   margin-top: 30px;
@@ -192,16 +192,16 @@ div.detail-buttom {
 p.detail-buttom {
   /* See details */
 
-  position: relative;
-  height: 19px;
-  left: 12px;
-  right: 12px;
+//   position: relative;
+//   height: 19px;
+//   left: 12px;
+//   right: 12px;
 
-  top: 200%;
-  left: 150%;
+//   top: 50%;
+//   left: 150%;
 
-  margin: -70px 0 0 -170px;
-  //   top: 100%;
+//   margin: 0 0 0 0;
+    // top: 100%;
   //   top: 50%;
   //   -ms-transform: translateY(-50%);
   //   transform: translateY(-50%);
@@ -212,7 +212,7 @@ p.detail-buttom {
   font-style: normal;
   font-weight: 800;
   font-size: 16px;
-  line-height: 120%;
+  line-height: 250%;
   /* or 19px */
 
   text-align: center;
@@ -235,11 +235,13 @@ p.separator {
   height: 0px;
   left: 0px;
   right: 0px;
-  bottom: 80px;
+  bottom: 0px;
 
   /* Mineral Light / Mineral 20 */
 
-  border: 1px solid #cddbe4;
+    width: 100%;
+
+  border: 1px solid #eaeff3;
 }
 
 // #productlist {
