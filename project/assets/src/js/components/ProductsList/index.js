@@ -35,6 +35,9 @@ class ProductsList extends React.Component {
             <Col>
               <h1>Product List</h1>
             </Col>
+            <Col>
+              <h1>test</h1>
+            </Col>
           </Row>
 
           {/* {products.map(product => (

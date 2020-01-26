@@ -1,0 +1,63 @@
+.brand {
+  /* brand */
+
+  position: absolute;
+  width: 350px;
+  height: 60px;
+  left: calc(50% - 350px / 2);
+  top: 3px;
+}
+
+.group19 {
+  /* Group 19 */
+
+  position: absolute;
+  width: 343px;
+  height: 44px;
+  left: 4px;
+  top: 8px;
+}
+
+.icon {
+  /* icon */
+
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  left: 4px;
+  top: 8px;
+}
+
+.logomark {
+  /* logotype */
+
+  position: absolute;
+  width: 275px;
+  height: 34px;
+  left: 72px;
+  top: 13px;
+
+  /* Logotype */
+
+  font-family: Bungee;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 120%;
+  /* identical to box height, or 34px */
+
+  display: flex;
+  align-items: center;
+
+  /* Mineral Light / White */
+
+  color: #ffffff;
+}
+
+a:visited{
+    color: #ffffff
+}
+a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}

@@ -22,7 +22,16 @@ class App extends React.Component {
     return (
       <div id ="react-app">
         <header>
-            <h1 className="logo"><a className="logo" href='/'>STATIONERY SHOP</a>⁢</h1>
+          <div className="brand">
+            <div className="group19">
+              <div className="icon">
+                <a href='/'><img src="https://imgbbb.com/images/2020/01/26/icon.png" alt="Logomark"></img></a>
+              </div>
+              <div className="logomark">
+                <a href='/'>STATIONERY SHOP</a>⁢
+              </div>            
+            </div>
+          </div>
         </header>
         <main>
         <Provider store={store}>
