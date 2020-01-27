@@ -6,6 +6,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { fetchProduct } from '../../store/actions';
 
+import './product.scss';
+
+import './arrow.scss';
 
 class ProductsDetail extends React.Component {
 
@@ -30,11 +33,17 @@ class ProductsDetail extends React.Component {
     if (product) {
       return (
         <Container>
-          <Row>
-            <Col>
-              <h1>{product.name}</h1>
-            </Col>
+         
+
+         <div className="product-list-header">
+         <Row>
+            <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
           </Row>
+          </div>
+          
+          
+
+
 
           <Row>
             <Col>
@@ -51,8 +60,9 @@ class ProductsDetail extends React.Component {
                 <dd>{product.available_quantity}</dd>
                 <dt>Category:</dt>
                 <dd>{product.category}</dd>
+                
               </dl>
-              <Link to='/'>Back to products list</Link>
+              
             </Col>
           </Row>
         </Container>

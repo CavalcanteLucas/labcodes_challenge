@@ -33,11 +33,9 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <div> 
         <Provider store={store}>
           <Routes />
         </Provider>
-        </div>
       </div>
     ) 
   }
