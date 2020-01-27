@@ -48,3 +48,38 @@
         }
     }
 }
+[class*="icono-arrow2"] {
+    width: 8px; // left side stick
+    height: 8px; // right side stick
+    border-width: 2px 2px 0 0; // side stick width 
+    border-style: solid;
+    margin: 2px;
+    &:before { // midle stick size
+        right: 0;
+        top: -2px; // displacement
+        position: absolute;
+        height: 2px; // width
+        box-shadow: inset 0 0 0 32px;
+        transform: rotate(-45deg);
+        width: 14px; // size
+        transform-origin: right top;
+    }
+    &[class*="-left"] {
+        transform: rotate(-135deg);
+        &[class*="-up"] {
+            transform: rotate(-90deg);
+        }
+        &[class*="-down"] {
+            transform: rotate(180deg);
+        }
+    }
+    &[class*="-up"] {
+        transform: rotate(-45deg);
+        color: #C22929;
+        bottom: 4px;
+    }
+    &[class*="-down"] {
+        transform: rotate(135deg);
+        color: #168938;
+    }
+}

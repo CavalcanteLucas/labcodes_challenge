@@ -6,20 +6,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { fetchProduct } from '../../store/actions';
 
-import './product.scss';
-
 import './arrow.scss';
-import './arrow2.scss';
 
 class ProductsDetail extends React.Component {
 
   componentDidMount(){
     const { code } = this.props.match.params;
     this.props.fetchProduct(code);
+    console.log(code)
   }
 
   render(){
     const { isLoading, product } = this.props;
+
 
     function date_to_string(date){
       let dd = String(date.getDate()).padStart(2, '0');
