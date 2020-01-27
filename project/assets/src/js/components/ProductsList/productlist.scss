@@ -1,6 +1,6 @@
 div.product-list-body {
   display: flex;
-  flex:auto;
+  flex: auto;
   flex-wrap: wrap;
   //   grid-template-columns: repeat(2, 1fr);
   //   gap: 28px;
@@ -9,8 +9,7 @@ div.product-list-body {
 }
 
 div.item-box-container {
-    
-    flex: auto;
+  flex: auto;
 
   background: #ffffff;
   border-radius: 8px;
@@ -23,6 +22,12 @@ div.item-box-description-container {
   background: #ffffff;
   border-radius: 8px;
   margin: 16px;
+}
+
+div.io-history-day {
+  display: flex;
+  line-height: 10px;
+  align-content: center;
 }
 
 dd.quantity-available {
@@ -40,7 +45,35 @@ dd.io-history {
   font-weight: bold;
   font-size: 20px;
   color: #576975;
-  line-height: 72px;
+  line-height: 40px;
+  padding-top: 24px;
+}
+
+p.io-date {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+
+  color: #2e3942;
+}
+
+p.io-input {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  color: #168938;
+  margin-left: 32px;
+  margin-right: 16px;
+}
+
+p.io-output {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    color: #C22929;
 }
 
 dt.quantity-available {

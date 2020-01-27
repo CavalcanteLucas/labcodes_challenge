@@ -20,6 +20,24 @@ class ProductsDetail extends React.Component {
   render(){
     const { isLoading, product } = this.props;
 
+    function date_to_string(date){
+      let dd = String(date.getDate()).padStart(2, '0');
+      let mm = String(date.getMonth() + 1).padStart(2, '0');
+      let yyyy = date.getFullYear();
+      return (dd + '/' + mm + '/' + yyyy);
+    }
+
+    let date = new Date();
+
+    let string_today = date_to_string(date);
+ 
+    date.setDate(date.getDate()-1)
+    let string_yesterday = date_to_string(date);
+
+    date.setDate(date.getDate()-1)
+    let string_before_yesterday = date_to_string(date);
+
+
     if (isLoading) {
       return (
         <Container style={{ height: '100vh' }}>
@@ -69,6 +87,21 @@ class ProductsDetail extends React.Component {
             <dd className="quantity-available">Quantity Available:</dd>
             <dt className="quantity-available">{product.available_quantity}</dt>
             <dd className="io-history">I/O History</dd>
+            <div className="io-history-day">
+              <p className="io-date">{string_today}</p>
+              <p className="io-input">input</p>
+              <p className="io-output">output</p>
+            </div>
+            <div className="io-history-day">
+              <p className="io-date">{string_yesterday}</p>
+              <p className="io-input">input</p>
+              <p className="io-output">output</p>
+            </div>
+            <div className="io-history-day">
+              <p className="io-date">{string_before_yesterday}</p>
+              <p className="io-input">input</p>
+              <p className="io-output">output</p>
+            </div>
           </dl>
 
           </div>
