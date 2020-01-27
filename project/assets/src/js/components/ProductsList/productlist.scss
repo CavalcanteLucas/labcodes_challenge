@@ -1,8 +1,10 @@
 div.product-list-body {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+//   grid-template-columns: repeat(2, 1fr);
+//   gap: 28px;
+  list-style: none;
+  justify-content: center;
 }
 
 div.item-box {
@@ -11,31 +13,36 @@ div.item-box {
   top: 0px;
   bottom: 0px;
 
-  /* Mineral Light / White */
-
   background: #ffffff;
   border-radius: 8px;
 
-//   margin-bottom: 28px;
+  margin:16px;
 }
 
 div.item-box-body {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-//   padding-bottom: -100px;
-    // margin-bottom: 0;
+  //   padding-bottom: -100px;
+  //   padding-top: 10px;
+}
+
+div.item-box-description {
+  padding-top: 12px;
+  padding-bottom: 6px;
 }
 
 div.product-list-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 28px;
-  //   padding-bottom: 116px;
-  //   padding-left: 0%;
-//   padding-right: 5%;
-  //   background: #000
   align-items: center;
+}
+
+div.product-description-header {
+  padding-top: 48px;
+  padding-bottom: 20px;
+  padding-left: 28px;
 }
 
 div.inventory-status-container {
@@ -47,33 +54,41 @@ div.inventory-status-container {
 
 div.code {
   display: flex;
-//   justify-content: flex-start;
 }
 
 div.category {
   display: flex;
-//   justify-content: flex-start;
+}
+
+div.description {
+  display: flex;
+}
+
+div.product-description-body {
+    display: flex;
+    // grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    list-style: none;
+}
+
+div.quantity-white-box {
+  width: 255px;
+  height: 256px;
+  left: 925px;
+  top: 228px;
+
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+div.quantity-box {
 }
 
 dt.name {
-  /* Name: */
-
-  //   position: absolute;
-//   width: 47px;
-// //   height: 19px;
-//   left: 16px;
-//   top: 16px;
-
-  /* p - Strong text */
-
   font-family: Lato;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-//   line-height: 120%;
-  /* or 19px */
-
-  /* Mineral Dark / Mineral 60 */
 
   color: #576975;
 }
@@ -95,7 +110,7 @@ dt.code {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-//   line-height: 120%;
+  //   line-height: 120%;
   /* or 19px */
 
   /* Mineral Dark / Mineral 80 */
@@ -104,22 +119,26 @@ dt.code {
 }
 
 dt.category {
-  /* Category: Stationery */
-
-  //   position: absolute;
   width: 72px;
-//   height: 19px;
   left: 16px;
-//   bottom: 17px;
 
   font-family: Lato;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-//   line-height: 100%;
-  /* or 19px */
 
-  /* Mineral Dark / Mineral 80 */
+  color: #2e3942;
+}
+
+dt.description {
+  width: 89px;
+  //   left: 16px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: normal;
 
   color: #2e3942;
 }
@@ -128,10 +147,10 @@ dd.name {
   /* Magic Rub 1954 Block Eraser */
 
   //   position: absolute;
-//   height: 29px;
-//   left: 16px;
-//   right: 16px;
-//   top: 36px;
+  //   height: 29px;
+  //   left: 16px;
+  //   right: 16px;
+  //   top: 36px;
 
   /* H2 - Normal or Product title */
 
@@ -139,7 +158,7 @@ dd.name {
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
-//   line-height: 120%;
+  //   line-height: 120%;
   /* identical to box height, or 29px */
 
   /* Mineral Dark / Mineral 80 */
@@ -164,7 +183,7 @@ dd.code {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-//   line-height: 120%;
+  //   line-height: 120%;
   /* or 19px */
 
   /* Mineral Dark / Mineral 80 */
@@ -175,22 +194,26 @@ dd.code {
 dd.category {
   /* Category: Stationery */
 
-  //   position: absolute;
   width: 146px;
-//   height: 19px;
-//   left: 16px;
-//   bottom: 17px;
 
   font-family: Lato;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-//   line-height: 120%;
-  /* or 19px */
-
-  /* Mineral Dark / Mineral 80 */
 
   color: #2e3942;
+}
+
+dd.description {
+  width: 400px;
+
+  font-family: Lato;
+  //   font-style: normal;
+  //   font-weight: normal;
+  font-size: 16px;
+  line-height: normal;
+
+  color: #8297a7;
 }
 
 div.detail-buttom {
@@ -254,14 +277,3 @@ p.separator {
 
   border: 1px solid #eaeff3;
 }
-
-// #productlist {
-//     flex: 1;
-// }
-
-// productlist ul {
-//     display: grid;
-//     grid-template-columns: repeat(2, 1fr);
-//     gap: 20px;
-//     list-style: none;
-// }

@@ -35,36 +35,38 @@ class ProductsDetail extends React.Component {
         <Container>
          
 
-         <div className="product-list-header">
-         <Row>
-            <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
-          </Row>
+          <div className="product-description-header">
+            <Row>
+              <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
+            </Row>
           </div>
-          
-          
 
-
-
-          <Row>
-            <Col>
-              <dl>
-                <dt>Code:</dt>
-                <dd>{product.code}</dd>
-                {product.description &&
-                  <React.Fragment>
-                    <dt>Description:</dt>
-                    <dd>{product.description}</dd>
-                  </React.Fragment>
-                }
-                <dt>Available quantity:</dt>
-                <dd>{product.available_quantity}</dd>
-                <dt>Category:</dt>
-                <dd>{product.category}</dd>
-                
+          <div className="product-description-body">
+          <div className="item-box">
+            <div className="item-box-description">
+            <div className="item-box-body">
+              <dl className="item-box-body">
+              <div className="code">
+                <dt className="code">Code: </dt>
+                <dd className="code">{product.code}</dd>
+              </div>
+              <div className="category">
+                <dt className="category">Category:</dt>
+                <dd className="category">{product.category}</dd>
+              </div>
+              <div className="description">
+                <dt className="description">Description:</dt>
+                <dd className="description">{product.description}</dd>
+              </div>
               </dl>
-              
-            </Col>
-          </Row>
+            </div>
+            </div>
+          </div>
+
+          <div className="quantity-white-box">
+
+          </div>
+          </div>  
         </Container>
       );
     }
