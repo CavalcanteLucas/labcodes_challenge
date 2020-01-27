@@ -9,6 +9,7 @@ import { fetchProduct } from '../../store/actions';
 import './product.scss';
 
 import './arrow.scss';
+import './arrow2.scss';
 
 class ProductsDetail extends React.Component {
 
@@ -94,8 +95,10 @@ class ProductsDetail extends React.Component {
             </div>
             <div className="io-history-day">
               <p className="io-date">{string_yesterday}</p>
-              <p className="io-input">input</p>
-              <p className="io-output">output</p>
+              {/* <div className="value-box"> */}
+                <p className="io-input"><i className="icono-arrow2-down"></i>20</p>
+                <p className="io-output"><i className="icono-arrow2-up"></i>10</p>
+              {/* </div> */}
             </div>
             <div className="io-history-day">
               <p className="io-date">{string_before_yesterday}</p>

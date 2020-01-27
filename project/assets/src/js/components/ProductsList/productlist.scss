@@ -56,6 +56,8 @@ p.io-date {
   font-size: 16px;
 
   color: #2e3942;
+  margin-left: 1px;
+  margin-right: 4px;
 }
 
 p.io-input {
@@ -64,16 +66,25 @@ p.io-input {
   font-weight: 900;
   font-size: 16px;
   color: #168938;
-  margin-left: 32px;
-  margin-right: 16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  width: 36px;
+  //   margin-right: 16px;
 }
 
 p.io-output {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 16px;
-    color: #C22929;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  color: #c22929;
+  margin-left: 4px;
+  margin-right: 1px;
+  width: 36px;
+}
+
+div.value-box {
+  display: flex;
 }
 
 dt.quantity-available {
@@ -151,7 +162,7 @@ div.product-description-body {
 }
 
 div.quantity-white-box {
-  flex: 0 0 255px;
+  flex: 0 0 210px;
   height: 256px;
   left: 925px;
   top: 228px;
