@@ -5,7 +5,7 @@ import './productlist.scss'
 
 export default function Product(props){
   return (
-    <div className="item-box">
+    <div className="item-box-container">
     <div >
     <dl className="item-box-header">
       <dt className="name">Name:</dt>

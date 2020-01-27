@@ -42,7 +42,7 @@ class ProductsDetail extends React.Component {
           </div>
 
           <div className="product-description-body">
-          <div className="item-box">
+          <div className="item-box-description-container">
             <div className="item-box-description">
             <div className="item-box-body">
               <dl className="item-box-body">
@@ -64,7 +64,14 @@ class ProductsDetail extends React.Component {
           </div>
 
           <div className="quantity-white-box">
+          <div className="quantity-box"> 
+          <dl>
+            <dd className="quantity-available">Quantity Available:</dd>
+            <dt className="quantity-available">{product.available_quantity}</dt>
+            <dd className="io-history">I/O History</dd>
+          </dl>
 
+          </div>
           </div>
           </div>  
         </Container>
