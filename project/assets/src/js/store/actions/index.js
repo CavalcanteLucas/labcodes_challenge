@@ -8,9 +8,9 @@ export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 export const FETCH_PRODUCT_SUCCESS = 'FETCH_PRODUCT_SUCCESS';
 export const FETCH_PRODUCT_FAILURE = 'FETCH_PRODUCT_FAILURE';
 
-export const FETCH_LOG = 'FETCH_LOG';
-export const FETCH_LOG_SUCCESS = 'FETCH_LOG_SUCCESS';
-export const FETCH_LOG_FAILURE = 'FETCH_LOG_FAILURE';
+// export const FETCH_LOG = 'FETCH_LOG';
+// export const FETCH_LOG_SUCCESS = 'FETCH_LOG_SUCCESS';
+// export const FETCH_LOG_FAILURE = 'FETCH_LOG_FAILURE';
 
 
 export const fetchProducts = () => {
@@ -38,14 +38,15 @@ export const fetchProduct = (code) => {
   };
 }
 
-export const fetchLog = () => {
-  return {
-    types: {
-      request: FETCH_LOG,
-      success: FETCH_LOG_SUCCESS,
-      failure: FETCH_LOG_FAILURE,
-    },
-    shouldDispatch: state => !state.log.items || !state.log.items.length,
-    apiCallFunction: () => fetchFromApi('/api/log/'),
-  };
-}
+
+// export const fetchLog = () => {
+//   return {
+//     types: {
+//       request: FETCH_LOG,
+//       success: FETCH_LOG_SUCCESS,
+//       failure: FETCH_LOG_FAILURE,
+//     },
+//     shouldDispatch: state => !state.log.items || !state.log.items.length,
+//     apiCallFunction: () => fetchFromApi('/api/log/'),
+//   };
+// }

@@ -11,7 +11,6 @@ export default class Routes extends React.Component {
       <Router>
         <Route path='/:code/' component={ProductDetail} />
         <Route path='/' exact component={ProductsList} />
-        <Route path='/api' exact component={ProductsList} />
       </Router>
     )
   }

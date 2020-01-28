@@ -4,21 +4,23 @@ import { Link } from 'react-router-dom';
 import { PongSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { fetchProduct } from '../../store/actions';
+import { fetchProduct, fetchLog } from '../../store/actions';
 
 import './arrow.scss';
+import api from 'react-redux-api-tools/dist/api';
 
 class ProductsDetail extends React.Component {
 
   componentDidMount(){
     const { code } = this.props.match.params;
     this.props.fetchProduct(code);
-    console.log(code)
+    // this.props.fetchLog();
   }
 
   render(){
     const { isLoading, product } = this.props;
 
+    // producing the dates
 
     function date_to_string(date){
       let dd = String(date.getDate()).padStart(2, '0');
@@ -28,15 +30,25 @@ class ProductsDetail extends React.Component {
     }
 
     let date = new Date();
-
     let string_today = date_to_string(date);
- 
     date.setDate(date.getDate()-1)
     let string_yesterday = date_to_string(date);
-
     date.setDate(date.getDate()-1)
     let string_before_yesterday = date_to_string(date);
 
+
+
+    // getLog
+    
+    const api_url = "http://127.0.0.1:8000/api/inventory/log/";
+
+    async function fetchLog(){
+      const response = await fetch(api_url);
+      const json = await response.json();
+      console.log(json);
+    }
+
+    fetchLog();
 
     if (isLoading) {
       return (

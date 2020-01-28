@@ -7,6 +7,9 @@ import {
   FETCH_PRODUCT,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
+  // FETCH_LOG,
+  // FETCH_LOG_SUCCESS,
+  // FETCH_LOG_FAILURE,
 } from '../actions';
 
 
@@ -21,6 +24,7 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
   switch(action.type) {
 
+    // case FETCH_LOG:
     case FETCH_PRODUCT:
     case FETCH_PRODUCTS:
       return {
@@ -29,6 +33,12 @@ const productReducer = (state = initialState, action) => {
         error: null
       };
 
+    // case FETCH_LOG_SUCCESS:
+    //   return{
+    //     ...state,
+    //     isLoading: false,
+    //     items: action.response.data
+    //   };
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
@@ -43,6 +53,7 @@ const productReducer = (state = initialState, action) => {
         selectedItem: action.response.data
       };
 
+    // case FETCH_LOG_FAILURE:
     case FETCH_PRODUCT_FAILURE:
     case FETCH_PRODUCTS_FAILURE:
       return {
