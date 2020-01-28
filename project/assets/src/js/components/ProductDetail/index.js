@@ -4,51 +4,129 @@ import { Link } from 'react-router-dom';
 import { PongSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { fetchProduct, fetchLog } from '../../store/actions';
+import { fetchProduct } from '../../store/actions';
 
 import './arrow.scss';
 import api from 'react-redux-api-tools/dist/api';
 
+
+function sum(total,num) {
+  return total + num;
+}
+
+function income(l) {
+  return l.income;
+}
+
+function outcome(l) {
+  return l.outcome;
+}
+
+function dateToString(date){
+// producing date strings for I/O history
+  let dd = String(date.getDate()).padStart(2, '0');
+  let mm = String(date.getMonth() + 1).padStart(2, '0');
+  let yyyy = date.getFullYear();
+  return (dd + '/' + mm + '/' + yyyy);
+}
+
+function dateConvertFormat(date){
+//converting date formats from resulted JSON
+  let [yyyy,mm,dd] = date.split('-');
+  return (dd + '/' + mm + '/' + yyyy)
+}
+
+async function fetchLog(){
+// getting log for quantity changes 
+  const api_url = "http://127.0.0.1:8000/api/inventory/log/";
+  const response = await fetch(api_url);
+  const log = await response.json();
+  return log;
+}
+
+async function getIO(product){
+
+  // export default getValues;
+  var date = new Date();
+  const today = date;
+  var today_string = dateToString(today);
+  date.setDate(date.getDate()-1)
+  const yesterday = date;
+  var yesterday_string = dateToString(yesterday);
+  date.setDate(date.getDate()-1)
+  const beforeYesterday = date;
+  var beforeYesterday_string = dateToString(beforeYesterday);
+
+  fetchLog().then(log => {
+    // i/o values for 3 past days
+    let today_income=0;
+    let today_outcome=0;
+    let yesterday_income=0;
+    let yesterday_outcome=0;
+    let beforeYesterday_income=0;
+    let beforeYesterday_outcome=0;
+
+    let filteredLog = log.filter(it => 
+      it.code == product.code);
+
+    const todayLog           = filteredLog.filter(it => 
+      dateConvertFormat(it.date) == today_string);
+    const yesterdayLog       = filteredLog.filter(it => 
+      dateConvertFormat(it.date) == yesterday_string);
+    const beforeYesterdayLog = filteredLog.filter(it => 
+      dateConvertFormat(it.date) == beforeYesterday_string);
+
+    if (todayLog.length) {
+      today_income            = todayLog.map(income).reduce(sum);
+      today_outcome           = todayLog.map(outcome).reduce(sum);
+    }
+    if (yesterdayLog.length) {
+      yesterday_income        = yesterdayLog.map(income).reduce(sum);
+      yesterday_outcome       = yesterdayLog.map(outcome).reduce(sum);
+    }
+    if (beforeYesterdayLog.length) {
+      beforeYesterday_income  = beforeYesterdayLog.map(income).reduce(sum);
+      beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
+    }
+
+    console.log(today_income)
+    return today_income
+    // console.log(today_outcome)
+    // console.log(yesterday_income)
+    // console.log(yesterday_outcome)
+    // console.log(beforeYesterday_income)
+    // console.log(beforeYesterday_outcome)
+
+  });
+}
+
+// export default getValues;
+var date = new Date();
+const today = date;
+var today_string = dateToString(today);
+date.setDate(date.getDate()-1)
+const yesterday = date;
+var yesterday_string = dateToString(yesterday);
+date.setDate(date.getDate()-1)
+const beforeYesterday = date;
+var beforeYesterday_string = dateToString(beforeYesterday);
+
 class ProductsDetail extends React.Component {
+
 
   componentDidMount(){
     const { code } = this.props.match.params;
     this.props.fetchProduct(code);
-    // this.props.fetchLog();
+
+    console.log(code)
+
+    // getValues(this.propos.product, today_string, yesterday_string, beforeYesterday_string)
+    
   }
 
   render(){
     const { isLoading, product } = this.props;
-
-    // producing the dates
-
-    function date_to_string(date){
-      let dd = String(date.getDate()).padStart(2, '0');
-      let mm = String(date.getMonth() + 1).padStart(2, '0');
-      let yyyy = date.getFullYear();
-      return (dd + '/' + mm + '/' + yyyy);
-    }
-
-    let date = new Date();
-    let string_today = date_to_string(date);
-    date.setDate(date.getDate()-1)
-    let string_yesterday = date_to_string(date);
-    date.setDate(date.getDate()-1)
-    let string_before_yesterday = date_to_string(date);
-
-
-
-    // getLog
-    
-    const api_url = "http://127.0.0.1:8000/api/inventory/log/";
-
-    async function fetchLog(){
-      const response = await fetch(api_url);
-      const json = await response.json();
-      console.log(json);
-    }
-
-    fetchLog();
+    // const today_income = 
 
     if (isLoading) {
       return (
@@ -61,70 +139,87 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
-      return (
-        <Container>
-         
 
-          <div className="product-description-header">
-            <Row>
-              <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
-            </Row>
-          </div>
 
-          <div className="product-description-body">
-          <div className="item-box-description-container">
-            <div className="item-box-description">
-            <div className="item-box-body">
-              <dl className="item-box-body">
-              <div className="code">
-                <dt className="code">Code: </dt>
-                <dd className="code">{product.code}</dd>
+
+
+      
+      //then( today_income => {}
+      //
+      //.
+      
+      //
+
+      // const today_income_ = await fetchLog();
+      // console.log(product)
+
+
+      // const today_income = await getValues(product, today_string, yesterday_string, beforeYesterday_string);
+
+      // getValues(product, today_string, yesterday_string, beforeYesterday_string).then(today_income => {
+      //   console.log(today_income)
+        return (
+          <Container>
+            <div className="product-description-header">
+              <Row>
+                <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
+              </Row>
+            </div>
+
+            <div className="product-description-body">
+            <div className="item-box-description-container">
+              <div className="item-box-description">
+              <div className="item-box-body">
+                <dl className="item-box-body">
+                <div className="code">
+                  <dt className="code">Code: </dt>
+                  <dd className="code">{product.code}</dd>
+                </div>
+                <div className="category">
+                  <dt className="category">Category:</dt>
+                  <dd className="category">{product.category}</dd>
+                </div>
+                <div className="description">
+                  <dt className="description">Description:</dt>
+                  <dd className="description">{product.description}</dd>
+                </div>
+                </dl>
               </div>
-              <div className="category">
-                <dt className="category">Category:</dt>
-                <dd className="category">{product.category}</dd>
               </div>
-              <div className="description">
-                <dt className="description">Description:</dt>
-                <dd className="description">{product.description}</dd>
+            </div>
+
+            <div className="quantity-white-box">
+            <div className="quantity-box"> 
+            <dl>
+              <dd className="quantity-available">Quantity Available:</dd>
+              <dt className="quantity-available">{product.available_quantity}</dt>
+              <dd className="io-history">I/O History</dd>
+              <div className="io-history-day">
+                <p className="io-date">{today_string}</p>
+                <p className="io-input">{today_string}</p>
+                <p className="io-output">{today_string}</p>
               </div>
-              </dl>
-            </div>
-            </div>
-          </div>
+              <div className="io-history-day">
+                <p className="io-date">{yesterday_string}</p>
+                {/* <div className="value-box"> */}
+                  <p className="io-input"><i className="icono-arrow2-down"></i>{today_string}</p>
+                  <p className="io-output"><i className="icono-arrow2-up"></i>{today_string}</p>
+                {/* </div> */}
+              </div>
+              <div className="io-history-day">
+                <p className="io-date">{beforeYesterday_string}</p>
+                <p className="io-input">{today_string}</p>
+                <p className="io-output">{today_string}</p>
+              </div>
+            </dl>
 
-          <div className="quantity-white-box">
-          <div className="quantity-box"> 
-          <dl>
-            <dd className="quantity-available">Quantity Available:</dd>
-            <dt className="quantity-available">{product.available_quantity}</dt>
-            <dd className="io-history">I/O History</dd>
-            <div className="io-history-day">
-              <p className="io-date">{string_today}</p>
-              <p className="io-input">input</p>
-              <p className="io-output">output</p>
             </div>
-            <div className="io-history-day">
-              <p className="io-date">{string_yesterday}</p>
-              {/* <div className="value-box"> */}
-                <p className="io-input"><i className="icono-arrow2-down"></i>20</p>
-                <p className="io-output"><i className="icono-arrow2-up"></i>10</p>
-              {/* </div> */}
             </div>
-            <div className="io-history-day">
-              <p className="io-date">{string_before_yesterday}</p>
-              <p className="io-input">input</p>
-              <p className="io-output">output</p>
-            </div>
-          </dl>
-
-          </div>
-          </div>
-          </div>  
-        </Container>
-      );
+            </div>  
+          </Container>
+        );
+      // })
     }
-
     return null;
   }
 }

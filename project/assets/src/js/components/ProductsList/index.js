@@ -26,7 +26,7 @@ class ProductsList extends React.Component {
     }
     // console.log(total_items_in_stock)
 
-    console.log(products)
+    // console.log(products)
 
     if (isLoading) {
       return (
