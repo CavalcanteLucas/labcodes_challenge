@@ -17,11 +17,11 @@ class Product(models.Model):
         return f'{self.code}: {self.name}'
 
 
-class ProductLog(models.Model):
+class Log(models.Model):
     code = models.ForeignKey(Product, on_delete=models.CASCADE)
-    change_date = models.DateField(verbose_name=_('Date of change'), blank=False)
-    input_quantity = models.IntegerField(verbose_name=_('Input quantity'))
-    output_quantity = models.IntegerField(verbose_name=_('Output quantity'))
+    date = models.DateField(verbose_name=_('Date of change'), blank=False)
+    income = models.IntegerField(verbose_name=_('Income'))
+    outcome = models.IntegerField(verbose_name=_('Outcome'))
 
     def __str__(self):
-        return f'{self.code}: {self.input_quantity} / {self.output_quantity}'
+        return f'{self.code}: {self.income} / {self.outcome}'

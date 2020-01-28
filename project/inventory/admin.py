@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from inventory.models import Product, ProductLog
+from inventory.models import Product, Log
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -10,8 +10,8 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 
 
-class ProductLogAdmin(admin.ModelAdmin):
-    list_display = ['code', 'change_date']
+class LogAdmin(admin.ModelAdmin):
+    list_display = ['code', 'date']
 
 
-admin.site.register(ProductLog, ProductLogAdmin)
+admin.site.register(Log, LogAdmin)

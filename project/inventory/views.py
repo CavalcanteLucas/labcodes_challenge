@@ -3,13 +3,32 @@ from rest_framework.views import APIView, Response
 
 from django.shortcuts import get_object_or_404
 
-from inventory.models import Product, ProductLog
-from inventory.serializers import ProductSerializer, QuantitySerializer
+from inventory.models import Product, Log
+from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer
 
 
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class ListLogEndpoint(ListAPIView):
+    queryset = Log.objects.all()
+    serializer_class = LogSerializer
+
+
+    # log = queryset
+
+    # expected_content = [
+    #     {
+    #         "code": l.code,
+    #         "date": l.date,
+    #         "income": l.income,
+    #         "outcome": l.outcome
+    #     } for l in log
+    # ]
+
+    # return Response(expected_content)
 
 
 class ProductDetailEndpoint(RetrieveAPIView):
