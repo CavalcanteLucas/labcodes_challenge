@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { PongSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { fetchProduct } from '../../store/actions';
+import { fetchProduct , fetchLog } from '../../store/actions';
 
 import './arrow.scss';
 import api from 'react-redux-api-tools/dist/api';
@@ -36,14 +36,18 @@ function dateConvertFormat(date){
   return (dd + '/' + mm + '/' + yyyy)
 }
 
-async function fetchLog(){
-// getting log for quantity changes 
-  const api_url = "http://127.0.0.1:8000/api/inventory/log/";
-  const response = await fetch(api_url);
-  const log = await response.json();
-  return log;
-}
 
+// async function fetchLog(){
+// // getting log for quantity changes 
+//   const api_url = "http://127.0.0.1:8000/api/inventory/log/";
+//   const response = await fetch(api_url);
+//   const log = await response.json();
+//   // console.log(log)
+//   return log;
+// }
+
+
+  
 async function getIO(product){
 
   // export default getValues;
@@ -89,8 +93,11 @@ async function getIO(product){
       beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
     }
 
-    console.log(today_income)
-    return today_income
+    // console.log(today_income)
+    // this.setState({
+    //   Today_income: today_income
+    // })
+    return today_income;
     // console.log(today_outcome)
     // console.log(yesterday_income)
     // console.log(yesterday_outcome)
@@ -113,21 +120,38 @@ var beforeYesterday_string = dateToString(beforeYesterday);
 
 class ProductsDetail extends React.Component {
 
+    // constructor(props) {
+    //   super(props);
+    //   this.state = {
+    //     log: []
+    //   }
+    // }
 
-  componentDidMount(){
-    const { code } = this.props.match.params;
-    this.props.fetchProduct(code);
+    componentDidMount(){
+      const { code } = this.props.match.params;
+      this.props.fetchProduct(code);
+      this.props.fetchLog();
+      // const { isLoading, product } = this.props;
 
-    console.log(code)
+      // fetchLog();
 
-    // getValues(this.propos.product, today_string, yesterday_string, beforeYesterday_string)
-    
-  }
+    // this.data = await this.getIO(product);
+    // this.props.getIO(product)
+
+    // const { isLoading, product } = this.props;
+
+    // getIO(product).then(today_income => {
+    //   console.log(today_income)
+    // });
+
+    }
 
   render(){
-    const { isLoading, product } = this.props;
-    // const today_income = 
+    
+    const { isLoading, product, log } = this.props;
 
+    console.log(log)
+    
     if (isLoading) {
       return (
         <Container style={{ height: '100vh' }}>
@@ -139,25 +163,7 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
-
-
-
-
-      
-      //then( today_income => {}
-      //
-      //.
-      
-      //
-
-      // const today_income_ = await fetchLog();
-      // console.log(product)
-
-
-      // const today_income = await getValues(product, today_string, yesterday_string, beforeYesterday_string);
-
-      // getValues(product, today_string, yesterday_string, beforeYesterday_string).then(today_income => {
-      //   console.log(today_income)
+            
         return (
           <Container>
             <div className="product-description-header">
@@ -196,7 +202,9 @@ class ProductsDetail extends React.Component {
               <dd className="io-history">I/O History</dd>
               <div className="io-history-day">
                 <p className="io-date">{today_string}</p>
-                <p className="io-input">{today_string}</p>
+                {/* <p className="io-input">{this.state.Today_income}</p> */}
+
+
                 <p className="io-output">{today_string}</p>
               </div>
               <div className="io-history-day">
@@ -212,7 +220,6 @@ class ProductsDetail extends React.Component {
                 <p className="io-output">{today_string}</p>
               </div>
             </dl>
-
             </div>
             </div>
             </div>  
@@ -224,7 +231,19 @@ class ProductsDetail extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, product: state.products.selectedItem });
-const mapDispatchToProps = (dispatch) => ({ fetchProduct: (code) => dispatch(fetchProduct(code)) });
+const mapStateToProps = (state) => {
+  console.log(state.products.log)
+  return { 
+    isLoading: state.products.isLoading, 
+    product: state.products.selectedItem,
+    log: state.products.log
+  }
+};
+
+const mapDispatchToProps = (dispatch) => ({ 
+  fetchProduct: (code) => dispatch(fetchProduct(code)),
+  fetchLog: () => dispatch(fetchLog())
+});
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);
