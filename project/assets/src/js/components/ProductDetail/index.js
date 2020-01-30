@@ -31,21 +31,9 @@ function dateToString(date){
 }
 
 function dateConvertFormat(date){
-//converting date formats from resulted JSON
   let [yyyy,mm,dd] = date.split('-');
   return (dd + '/' + mm + '/' + yyyy)
 }
-
-
-// async function fetchLog(){
-// // getting log for quantity changes 
-//   const api_url = "http://127.0.0.1:8000/api/inventory/log/";
-//   const response = await fetch(api_url);
-//   const log = await response.json();
-//   // console.log(log)
-//   return log;
-// }
-
 
   
 async function getIO(product){
@@ -120,37 +108,17 @@ var beforeYesterday_string = dateToString(beforeYesterday);
 
 class ProductsDetail extends React.Component {
 
-    // constructor(props) {
-    //   super(props);
-    //   this.state = {
-    //     log: []
-    //   }
-    // }
-
     componentDidMount(){
       const { code } = this.props.match.params;
       this.props.fetchProduct(code);
       this.props.fetchLog();
-      // const { isLoading, product } = this.props;
-
-      // fetchLog();
-
-    // this.data = await this.getIO(product);
-    // this.props.getIO(product)
-
-    // const { isLoading, product } = this.props;
-
-    // getIO(product).then(today_income => {
-    //   console.log(today_income)
-    // });
-
     }
 
   render(){
     
     const { isLoading, product, log } = this.props;
 
-    console.log(log)
+    // console.log(log)
     
     if (isLoading) {
       return (
@@ -163,6 +131,37 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
+
+      // dispatching io from log
+      let today_income=0;
+      let today_outcome=0;
+      let yesterday_income=0;
+      let yesterday_outcome=0;
+      let beforeYesterday_income=0;
+      let beforeYesterday_outcome=0;
+
+      let filteredLog = log.filter(it => 
+        it.code == product.code);
+
+      const todayLog           = filteredLog.filter(it => 
+        dateConvertFormat(it.date) == today_string);
+      const yesterdayLog       = filteredLog.filter(it => 
+        dateConvertFormat(it.date) == yesterday_string);
+      const beforeYesterdayLog = filteredLog.filter(it => 
+        dateConvertFormat(it.date) == beforeYesterday_string);
+
+      if (todayLog.length) {
+        today_income            = todayLog.map(income).reduce(sum);
+        today_outcome           = todayLog.map(outcome).reduce(sum);
+      }
+      if (yesterdayLog.length) {
+        yesterday_income        = yesterdayLog.map(income).reduce(sum);
+        yesterday_outcome       = yesterdayLog.map(outcome).reduce(sum);
+      }
+      if (beforeYesterdayLog.length) {
+        beforeYesterday_income  = beforeYesterdayLog.map(income).reduce(sum);
+        beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
+      }
             
         return (
           <Container>
@@ -202,22 +201,21 @@ class ProductsDetail extends React.Component {
               <dd className="io-history">I/O History</dd>
               <div className="io-history-day">
                 <p className="io-date">{today_string}</p>
-                {/* <p className="io-input">{this.state.Today_income}</p> */}
-
-
-                <p className="io-output">{today_string}</p>
+                <p className="io-input">
+                  <i className="icono-arrow2-down"></i>
+                  {today_income != 0 ? today_income : '---'}
+                </p>
+                <p className="io-output"><i className="icono-arrow2-up"></i>{today_outcome != 0 ? today_outcome : '---'}</p>
               </div>
               <div className="io-history-day">
                 <p className="io-date">{yesterday_string}</p>
-                {/* <div className="value-box"> */}
-                  <p className="io-input"><i className="icono-arrow2-down"></i>{today_string}</p>
-                  <p className="io-output"><i className="icono-arrow2-up"></i>{today_string}</p>
-                {/* </div> */}
+                <p className="io-input"><i className="icono-arrow2-down"></i>{yesterday_income !=0 ? yesterday_income : '---'}</p>
+                <p className="io-output"><i className="icono-arrow2-up"></i>{yesterday_outcome !=0 ? yesterday_outcome : '---'}</p>
               </div>
               <div className="io-history-day">
                 <p className="io-date">{beforeYesterday_string}</p>
-                <p className="io-input">{today_string}</p>
-                <p className="io-output">{today_string}</p>
+                <p className="io-input"><i className="icono-arrow2-down"></i>{beforeYesterday_income !=0 ? beforeYesterday_income : '---'}</p>
+                <p className="io-output"><i className="icono-arrow2-up"></i>{beforeYesterday_outcome !=0 ? beforeYesterday_outcome : '---'}</p>
               </div>
             </dl>
             </div>
