@@ -7,8 +7,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Product from './Product';
 
 
-import './productlist.scss';
-
 class ProductsList extends React.Component {
 
   componentDidMount(){
@@ -24,9 +22,6 @@ class ProductsList extends React.Component {
     for (var i = 0; i < total_items; i++) {
       total_items_in_stock += products[i].available_quantity;
     }
-    // console.log(total_items_in_stock)
-
-    // console.log(products)
 
     if (isLoading) {
       return (

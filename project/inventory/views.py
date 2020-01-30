@@ -16,21 +16,6 @@ class ListLogEndpoint(ListAPIView):
     queryset = Log.objects.all()
     serializer_class = LogSerializer
 
-
-    # log = queryset
-
-    # expected_content = [
-    #     {
-    #         "code": l.code,
-    #         "date": l.date,
-    #         "income": l.income,
-    #         "outcome": l.outcome
-    #     } for l in log
-    # ]
-
-    # return Response(expected_content)
-
-
 class ProductDetailEndpoint(RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

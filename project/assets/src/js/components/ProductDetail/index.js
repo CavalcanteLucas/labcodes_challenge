@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { fetchProduct , fetchLog } from '../../store/actions';
 
-import './arrow.scss';
+import '../../../scss/arrow.scss';
 import api from 'react-redux-api-tools/dist/api';
 
 
@@ -108,18 +108,16 @@ var beforeYesterday_string = dateToString(beforeYesterday);
 
 class ProductsDetail extends React.Component {
 
-    componentDidMount(){
+  componentDidMount(){
       const { code } = this.props.match.params;
       this.props.fetchProduct(code);
       this.props.fetchLog();
-    }
+  }
 
   render(){
     
     const { isLoading, product, log } = this.props;
 
-    // console.log(log)
-    
     if (isLoading) {
       return (
         <Container style={{ height: '100vh' }}>
@@ -163,74 +161,69 @@ class ProductsDetail extends React.Component {
         beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
       }
             
-        return (
-          <Container>
-            <div className="product-description-header">
-              <Row>
-                <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
-              </Row>
-            </div>
+      return (
+        <Container>
+          <div className="product-description-header">
+            <Row>
+              <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
+            </Row>
+          </div>
 
-            <div className="product-description-body">
-            <div className="item-box-description-container">
-              <div className="item-box-description">
-              <div className="item-box-body">
-                <dl className="item-box-body">
-                <div className="code">
-                  <dt className="code">Code: </dt>
-                  <dd className="code">{product.code}</dd>
-                </div>
-                <div className="category">
-                  <dt className="category">Category:</dt>
-                  <dd className="category">{product.category}</dd>
-                </div>
-                <div className="description">
-                  <dt className="description">Description:</dt>
-                  <dd className="description">{product.description}</dd>
-                </div>
-                </dl>
+          <div className="product-description-body">
+          <div className="item-box-description-container">
+            <div className="item-box-description">
+            <div className="item-box-body">
+              <dl className="item-box-body">
+              <div className="code">
+                <dt className="code">Code: </dt>
+                <dd className="code">{product.code}</dd>
               </div>
+              <div className="category">
+                <dt className="category">Category:</dt>
+                <dd className="category">{product.category}</dd>
               </div>
+              <div className="description">
+                <dt className="description">Description:</dt>
+                <dd className="description">{product.description}</dd>
+              </div>
+              </dl>
             </div>
+            </div>
+          </div>
 
-            <div className="quantity-white-box">
-            <div className="quantity-box"> 
-            <dl>
-              <dd className="quantity-available">Quantity Available:</dd>
-              <dt className="quantity-available">{product.available_quantity}</dt>
-              <dd className="io-history">I/O History</dd>
-              <div className="io-history-day">
-                <p className="io-date">{today_string}</p>
-                <p className="io-input">
-                  <i className="icono-arrow2-down"></i>
-                  {today_income != 0 ? today_income : '---'}
-                </p>
-                <p className="io-output"><i className="icono-arrow2-up"></i>{today_outcome != 0 ? today_outcome : '---'}</p>
-              </div>
-              <div className="io-history-day">
-                <p className="io-date">{yesterday_string}</p>
-                <p className="io-input"><i className="icono-arrow2-down"></i>{yesterday_income !=0 ? yesterday_income : '---'}</p>
-                <p className="io-output"><i className="icono-arrow2-up"></i>{yesterday_outcome !=0 ? yesterday_outcome : '---'}</p>
-              </div>
-              <div className="io-history-day">
-                <p className="io-date">{beforeYesterday_string}</p>
-                <p className="io-input"><i className="icono-arrow2-down"></i>{beforeYesterday_income !=0 ? beforeYesterday_income : '---'}</p>
-                <p className="io-output"><i className="icono-arrow2-up"></i>{beforeYesterday_outcome !=0 ? beforeYesterday_outcome : '---'}</p>
-              </div>
-            </dl>
+          <div className="quantity-white-box">
+          <div className="quantity-box"> 
+          <dl>
+            <dd className="quantity-available">Quantity Available:</dd>
+            <dt className="quantity-available">{product.available_quantity}</dt>
+            <dd className="io-history">I/O History</dd>
+            <div className="io-history-day">
+              <p className="io-date">{today_string}</p>
+              <p className="io-input">{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</p>
+              <p className="io-output">{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</p>
             </div>
+            <div className="io-history-day">
+              <p className="io-date">{yesterday_string}</p>
+              <p className="io-input">{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</p>
+              <p className="io-output">{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</p>
             </div>
-            </div>  
-          </Container>
-        );
-      // })
+            <div className="io-history-day">
+              <p className="io-date">{beforeYesterday_string}</p>
+              <p className="io-input">{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</p>
+              <p className="io-output">{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</p>
+            </div>
+          </dl>
+          </div>
+          </div>
+          </div>  
+        </Container>
+      );
     }
     return null;
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.products.log)
   return { 
     isLoading: state.products.isLoading, 
     product: state.products.selectedItem,

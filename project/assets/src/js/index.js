@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { apiMiddleware } from 'react-redux-api-tools';
 
 import Routes from './routes';
@@ -14,7 +14,13 @@ import '../scss/index.scss';
 
 import './global.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunk, apiMiddleware));
+const store = createStore(
+  rootReducer,
+  compose(  
+    applyMiddleware(thunk, apiMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 
 class App extends React.Component {

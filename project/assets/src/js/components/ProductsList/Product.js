@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './productlist.scss'
-
 export default function Product(props){
   return (
     
