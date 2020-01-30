@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from inventory.models import Product, Log
 from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer
 
+from datetime import date
+
 
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
@@ -15,6 +17,7 @@ class ListInventoryEndpoint(ListAPIView):
 class ListLogEndpoint(ListAPIView):
     queryset = Log.objects.all()
     serializer_class = LogSerializer
+
 
 class ProductDetailEndpoint(RetrieveAPIView):
     queryset = Product.objects.all()
@@ -33,5 +36,16 @@ class UpdateProductQuantityEndpoint(APIView):
         updated_quantity = serializer.validated_data['quantity']
         product.available_quantity += updated_quantity
         product.save()
+
+        if (updated_quantity > 0):
+            Log.objects.create(code=product,
+                               date=date.today(),
+                               income=updated_quantity,
+                               outcome=0)
+        else:
+            Log.objects.create(code=product,
+                               date=date.today(),
+                               income=0,
+                               outcome=-updated_quantity)
 
         return Response({'available_quantity': product.available_quantity})

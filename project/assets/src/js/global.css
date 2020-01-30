@@ -160,8 +160,8 @@ p.io-input {
     font-size: 16px;
     color: #168938;
     margin-left: 4px;
-    margin-right: 4px;
-    width: 36px;
+    margin-right: 2px;
+    width: 40px;
 }
 
 p.io-output {
@@ -170,9 +170,9 @@ p.io-output {
     font-weight: 900;
     font-size: 16px;
     color: #c22929;
-    margin-left: 4px;
+    margin-left: 2px;
     margin-right: 1px;
-    width: 36px;
+    width: 40px;
 }
 
 div.value-box {
