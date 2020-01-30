@@ -22,7 +22,6 @@ export const fetchProducts = () => {
   };
 }
 
-
 export const fetchProduct = (code) => {
   return {
     types: {
@@ -42,4 +41,4 @@ export const fetchLog = () => dispatch => {
       type: FETCH_IO,
       log: data
     }))
-  }
+}

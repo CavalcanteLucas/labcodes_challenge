@@ -41,6 +41,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.14",
@@ -49,6 +50,7 @@
     "react-redux-api-tools": "^2.1.1",
     "react-router-dom": "^5.0.1",
     "react-spinners-kit": "^1.9.0",
+    "react-timer-mixin": "^0.13.4",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "whatwg-fetch": "^3.0.0"

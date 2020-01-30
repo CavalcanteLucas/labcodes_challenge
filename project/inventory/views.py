@@ -37,15 +37,16 @@ class UpdateProductQuantityEndpoint(APIView):
         product.available_quantity += updated_quantity
         product.save()
 
-        if (updated_quantity > 0):
-            Log.objects.create(code=product,
-                               date=date.today(),
-                               income=updated_quantity,
-                               outcome=0)
-        else:
-            Log.objects.create(code=product,
-                               date=date.today(),
-                               income=0,
-                               outcome=-updated_quantity)
+        if (updated_quantity != 0):
+            if (updated_quantity > 0):
+                Log.objects.create(code=product,
+                                date=date.today(),
+                                income=updated_quantity,
+                                outcome=0)
+            else:
+                Log.objects.create(code=product,
+                                date=date.today(),
+                                income=0,
+                                outcome=-updated_quantity)
 
         return Response({'available_quantity': product.available_quantity})

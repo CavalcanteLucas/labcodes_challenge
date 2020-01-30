@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { PongSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -8,6 +8,8 @@ import { fetchProduct , fetchLog } from '../../store/actions';
 
 import '../../../scss/arrow.scss';
 import api from 'react-redux-api-tools/dist/api';
+
+// import TimerMixin from 'react-timer-mixin'; 
 
 
 function sum(total,num) {
@@ -35,65 +37,6 @@ function dateConvertFormat(date){
   return (dd + '/' + mm + '/' + yyyy)
 }
 
-  
-async function getIO(product){
-
-  // export default getValues;
-  var date = new Date();
-  const today = date;
-  var today_string = dateToString(today);
-  date.setDate(date.getDate()-1)
-  const yesterday = date;
-  var yesterday_string = dateToString(yesterday);
-  date.setDate(date.getDate()-1)
-  const beforeYesterday = date;
-  var beforeYesterday_string = dateToString(beforeYesterday);
-
-  fetchLog().then(log => {
-    // i/o values for 3 past days
-    let today_income=0;
-    let today_outcome=0;
-    let yesterday_income=0;
-    let yesterday_outcome=0;
-    let beforeYesterday_income=0;
-    let beforeYesterday_outcome=0;
-
-    let filteredLog = log.filter(it => 
-      it.code == product.code);
-
-    const todayLog           = filteredLog.filter(it => 
-      dateConvertFormat(it.date) == today_string);
-    const yesterdayLog       = filteredLog.filter(it => 
-      dateConvertFormat(it.date) == yesterday_string);
-    const beforeYesterdayLog = filteredLog.filter(it => 
-      dateConvertFormat(it.date) == beforeYesterday_string);
-
-    if (todayLog.length) {
-      today_income            = todayLog.map(income).reduce(sum);
-      today_outcome           = todayLog.map(outcome).reduce(sum);
-    }
-    if (yesterdayLog.length) {
-      yesterday_income        = yesterdayLog.map(income).reduce(sum);
-      yesterday_outcome       = yesterdayLog.map(outcome).reduce(sum);
-    }
-    if (beforeYesterdayLog.length) {
-      beforeYesterday_income  = beforeYesterdayLog.map(income).reduce(sum);
-      beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
-    }
-
-    // console.log(today_income)
-    // this.setState({
-    //   Today_income: today_income
-    // })
-    return today_income;
-    // console.log(today_outcome)
-    // console.log(yesterday_income)
-    // console.log(yesterday_outcome)
-    // console.log(beforeYesterday_income)
-    // console.log(beforeYesterday_outcome)
-
-  });
-}
 
 // export default getValues;
 var date = new Date();
@@ -106,12 +49,50 @@ date.setDate(date.getDate()-1)
 const beforeYesterday = date;
 var beforeYesterday_string = dateToString(beforeYesterday);
 
+
 class ProductsDetail extends React.Component {
 
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isFlushed: false
+  //   };
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // check current props and nextPros of dealLoaded flag. If dealLoaded was false, and is true, which means the data is fetched, then we should reset isFlushed
+  //   if (!this.props.dealLoaded && nextProps.dealLoaded) {
+  //     this.setState({
+  //       isFlushed: false
+  //     });
+  //   }
+  //   // since we assigned the location.state in <Link>, if we see this prop, and the data is not flushed yet, then flush data, in this case we call loadDeals(), which is a redux action
+  //   if (!this.state.isFlushed && (nextProps.location.state === 'flushDeal')) {
+  //     this.setState({
+  //       isFlushed: true,
+  //     }, () => this.props.loadDeals());
+  //   }
+  // }
+
+  // state = {
+  //   magicNumber: 23,
+  // }
+
+  // componentWillUpdate(){
+  //   window.location.reload();
+  // }
+
   componentDidMount(){
+      // window.location.reload();
+      // this.forceUpdate();
       const { code } = this.props.match.params;
       this.props.fetchProduct(code);
       this.props.fetchLog();
+      // onClick={() => window.location.reload()}
+      // TimerMixin.setTimeout(() => { 
+      //   this.props.fetchProduct(code);
+      //   console.log('ji')
+      //  },2000);
   }
 
   render(){
@@ -165,7 +146,9 @@ class ProductsDetail extends React.Component {
         <Container>
           <div className="product-description-header">
             <Row>
-              <Link to='/'><i className="icono-arrow1-left"></i></Link><h1 className="big-title">{product.name}</h1>
+              <Link to='/'>
+                <i className="icono-arrow1-left"></i>
+              </Link><h1 className="big-title">{product.name}</h1>
             </Row>
           </div>
 
@@ -238,3 +221,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);
+
+
+// const ProductsDetailWithRouter = withRouter(ProductsDetail);
+// export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetailWithRouter);

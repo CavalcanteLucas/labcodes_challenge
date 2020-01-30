@@ -48,14 +48,6 @@ h4.statuses {
     color: #414f58;
 }
 
-div.brand {
-    position: absolute;
-    width: 350px;
-    height: 60px;
-    left: calc(50% - 350px / 2);
-    top: 3px;
-}
-
 .group19 {
     position: relative;
     width: 343px;
@@ -96,6 +88,14 @@ a:hover {
     color: #ffffff;
 }
 
+div.brand {
+    position: absolute;
+    width: 350px;
+    height: 60px;
+    left: calc(50% - 350px / 2);
+    top: 3px;
+}
+
 div.product-list-body {
     display: flex;
     flex: auto;
@@ -124,69 +124,8 @@ div.io-history-day {
     align-content: center;
 }
 
-dd.quantity-available {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    color: #576975;
-}
-
-dd.io-history {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    color: #576975;
-    line-height: 40px;
-    padding-top: 24px;
-}
-
-p.io-date {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-
-    color: #2e3942;
-    margin-left: 1px;
-    margin-right: 4px;
-}
-
-p.io-input {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 16px;
-    color: #168938;
-    margin-left: 4px;
-    margin-right: 2px;
-    width: 40px;
-}
-
-p.io-output {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 16px;
-    color: #c22929;
-    margin-left: 2px;
-    margin-right: 1px;
-    width: 40px;
-}
-
 div.value-box {
     display: flex;
-}
-
-dt.quantity-available {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-
-    color: #2e3942;
-    line-height: 40px;
 }
 
 div.quantity-box {
@@ -254,7 +193,26 @@ div.quantity-white-box {
     border-radius: 8px;
 }
 
-div.quantity-box {
+div.detail-buttom {
+    border: 0;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    background: #007b7d;
+    border-radius: 4px;
+    width: 122px;
+    height: 40px;
+    right: 16px;
+    bottom: 16px;
+}
+
+dt.quantity-available {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+
+    color: #2e3942;
+    line-height: 40px;
 }
 
 dt.name {
@@ -302,6 +260,24 @@ dt.description {
     color: #2e3942;
 }
 
+dd.quantity-available {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #576975;
+}
+
+dd.io-history {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #576975;
+    line-height: 40px;
+    padding-top: 24px;
+}
+
 dd.name {
     font-family: Lato;
     font-style: normal;
@@ -339,16 +315,49 @@ dd.description {
     color: #8297a7;
 }
 
-div.detail-buttom {
-    border: 0;
-    margin-bottom: 16px;
-    margin-right: 16px;
-    background: #007b7d;
-    border-radius: 4px;
-    width: 122px;
-    height: 40px;
-    right: 16px;
-    bottom: 16px;
+dl.item-box-header {
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+dl.item-box-body {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 0;
+}
+
+p.io-date {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+
+    color: #2e3942;
+    margin-left: 1px;
+    margin-right: 4px;
+}
+
+p.io-input {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    color: #168938;
+    margin-left: 4px;
+    margin-right: 2px;
+    width: 40px;
+}
+
+p.io-output {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    color: #c22929;
+    margin-left: 2px;
+    margin-right: 1px;
+    width: 40px;
 }
 
 p.detail-buttom {
@@ -360,18 +369,6 @@ p.detail-buttom {
     text-align: center;
     text-transform: capitalize;
     color: #ffffff;
-}
-
-dl.item-box-header {
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-dl.item-box-body {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
 }
 
 p.separator {

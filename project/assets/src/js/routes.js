@@ -10,7 +10,7 @@ export default class Routes extends React.Component {
     return (
       <Router>
         <Route path='/:code/' component={ProductDetail} />
-        <Route path='/' exact component={ProductsList} />
+        <Route exact path='/' component={ProductsList} />
       </Router>
     )
   }
