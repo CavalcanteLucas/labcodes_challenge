@@ -9,9 +9,6 @@ import { fetchProduct , fetchLog } from '../../store/actions';
 import '../../../scss/arrow.scss';
 import api from 'react-redux-api-tools/dist/api';
 
-// import TimerMixin from 'react-timer-mixin'; 
-
-
 function sum(total,num) {
   return total + num;
 }
@@ -52,47 +49,10 @@ var beforeYesterday_string = dateToString(beforeYesterday);
 
 class ProductsDetail extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isFlushed: false
-  //   };
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   // check current props and nextPros of dealLoaded flag. If dealLoaded was false, and is true, which means the data is fetched, then we should reset isFlushed
-  //   if (!this.props.dealLoaded && nextProps.dealLoaded) {
-  //     this.setState({
-  //       isFlushed: false
-  //     });
-  //   }
-  //   // since we assigned the location.state in <Link>, if we see this prop, and the data is not flushed yet, then flush data, in this case we call loadDeals(), which is a redux action
-  //   if (!this.state.isFlushed && (nextProps.location.state === 'flushDeal')) {
-  //     this.setState({
-  //       isFlushed: true,
-  //     }, () => this.props.loadDeals());
-  //   }
-  // }
-
-  // state = {
-  //   magicNumber: 23,
-  // }
-
-  // componentWillUpdate(){
-  //   window.location.reload();
-  // }
-
   componentDidMount(){
-      // window.location.reload();
-      // this.forceUpdate();
       const { code } = this.props.match.params;
       this.props.fetchProduct(code);
       this.props.fetchLog();
-      // onClick={() => window.location.reload()}
-      // TimerMixin.setTimeout(() => { 
-      //   this.props.fetchProduct(code);
-      //   console.log('ji')
-      //  },2000);
   }
 
   render(){
@@ -221,7 +181,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);
-
-
-// const ProductsDetailWithRouter = withRouter(ProductsDetail);
-// export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetailWithRouter);

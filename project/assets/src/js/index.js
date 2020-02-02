@@ -24,22 +24,6 @@ const store = createStore(
 
 
 class App extends React.Component {
-  //   constructor(props) {
-  //     super(props);
-
-  //     this.state = {
-  //         pathname: props.pathname,
-  //     };
-  // }
-
-  // componentDidMount() {
-  //     console.info('App loaded in:', Math.round(performance.now()));
-    
-  //     history.onChange((pathname) => {
-  //         this.setState({pathname});
-  //     });
-  // }
-
   render () {
     return (
       <div>
