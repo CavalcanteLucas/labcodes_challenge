@@ -22,6 +22,7 @@ export const fetchProducts = () => {
   };
 }
 
+
 export const fetchProduct = (code) => {
   return {
     types: {
@@ -29,7 +30,7 @@ export const fetchProduct = (code) => {
       success: FETCH_PRODUCT_SUCCESS,
       failure: FETCH_PRODUCT_FAILURE,
     },
-    shouldDispatch: state => !state.products.selectedItem,
+    shouldDispatch: state => !state.products.selectedItem || (state.products.selectedItem.code !== code),
     apiCallFunction: () => fetchFromApi(`/api/inventory/${code}/`)
   };
 }
@@ -41,4 +42,4 @@ export const fetchLog = () => dispatch => {
       type: FETCH_IO,
       log: data
     }))
-}
+  }
