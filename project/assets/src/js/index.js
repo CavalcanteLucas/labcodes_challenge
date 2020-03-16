@@ -14,14 +14,13 @@ import '../scss/index.scss';
 
 import './global.css';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  compose(  
-    applyMiddleware(thunk, apiMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeEnhancers(applyMiddleware(thunk, apiMiddleware))
 );
 
+// const store = createStore(rootReducer, applyMiddleware(thunk, apiMiddleware));
 
 class App extends React.Component {
   render () {
