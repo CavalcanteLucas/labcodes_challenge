@@ -101,7 +101,7 @@ class ProductsDetail extends React.Component {
         beforeYesterday_income  = beforeYesterdayLog.map(income).reduce(sum);
         beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
       }
-            
+
       return (
         <Container>
           <div className="product-description-header">

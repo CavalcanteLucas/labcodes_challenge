@@ -13,6 +13,9 @@ class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    # def asdf(self):
+    #     return
+
 
 class ListLogEndpoint(ListAPIView):
     queryset = Log.objects.all()
