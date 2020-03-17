@@ -21,9 +21,6 @@ const store = createStore(
 class App extends React.Component {
   render () {
     return (
-      // <h1>
-      //   helloww
-      // </h1>
         <Provider store={store}>
           <Routes />
         </Provider>

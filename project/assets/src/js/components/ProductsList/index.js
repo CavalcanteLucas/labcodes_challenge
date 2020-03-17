@@ -6,6 +6,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import Product from './Product';
 
+import '../../../scss/index.scss';
+
 
 class ProductsList extends React.Component {
 
