@@ -34,28 +34,21 @@ class ProductsList extends React.Component {
     }
 
     return (
-      <div>
-        <Container>
-          <div className="product-list-header">
-            <h1 className="big-title">Product List</h1>
-            <div className="inventory-status-container">
-              <h3 className="small-title">Inventory Status</h3>
-              <h4 className="statuses">Single products: { total_items } </h4>
-              <h4 className="statuses">Total items in stock: { total_items_in_stock } </h4>
-            </div>
-          </div>
-          
-          <div className="product-list-body">
-            {products.map(product => (
-              <Row key={product.code}>
-                <Col>
-                  <Product {...product}/>
-                </Col>
-              </Row>
-            ))}
-          </div>
-        </Container>
-      </div>
+      <Container>
+          <Row>
+            <Col>
+              <h1>Product List</h1>
+            </Col>
+          </Row>
+        
+          {products.map(product => (
+            <Row key={product.code}>
+              <Col>
+                <Product {...product}/>
+              </Col>
+            </Row>
+          ))}
+      </Container>
     );
   }
 }
@@ -64,3 +57,26 @@ const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, produ
 const mapDispatchToProps = (dispatch) => ({ fetchProducts: () => dispatch(fetchProducts()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
+
+{/* <div>
+  <Container>
+    <div className="product-list-header">
+      <h1 className="big-title">Product List</h1>
+      <div className="inventory-status-container">
+        <h3 className="small-title">Inventory Status</h3>
+        <h4 className="statuses">Single products: { total_items } </h4>
+        <h4 className="statuses">Total items in stock: { total_items_in_stock } </h4>
+      </div>
+    </div>
+    
+    <div className="product-list-body">
+      {products.map(product => (
+        <Row key={product.code}>
+          <Col>
+            <Product {...product}/>
+          </Col>
+        </Row>
+      ))}
+    </div>
+  </Container>
+</div> */}

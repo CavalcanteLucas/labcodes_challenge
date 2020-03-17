@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PongSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { fetchProduct , fetchLog } from '../../store/actions';
-
+import { fetchProduct, fetchLog } from '../../store/actions';
 import '../../../scss/arrow.scss';
-import api from 'react-redux-api-tools/dist/api';
 
 function sum(total,num) {
   return total + num;
@@ -104,61 +102,29 @@ class ProductsDetail extends React.Component {
 
       return (
         <Container>
-          <div className="product-description-header">
-            <Row>
-              <Link to='/'>
-                <i className="icono-arrow1-left"></i>
-              </Link><h1 className="big-title">{product.name}</h1>
-            </Row>
-          </div>
+          <Row>
+            <Col>
+              <h1>{product.name}</h1>
+            </Col>
+          </Row>
 
-          <div className="product-description-body">
-          <div className="item-box-description-container">
-            <div className="item-box-description">
-            <div className="item-box-body">
-              <dl className="item-box-body">
-              <div className="code">
-                <dt className="code">Code: </dt>
-                <dd className="code">{product.code}</dd>
-              </div>
-              <div className="category">
-                <dt className="category">Category:</dt>
-                <dd className="category">{product.category}</dd>
-              </div>
-              <div className="description">
-                <dt className="description">Description:</dt>
-                <dd className="description">{product.description}</dd>
-              </div>
+          <Row>
+            <Col>
+              <dl>
+                <dt>Code:</dt>
+                <dd>{product.code}</dd>
+                {product.description &&
+                  <React.Fragment>
+                    <dt>Description:</dt>
+                    <dd>{product.description}</dd>
+                  </React.Fragment>
+                }
+                <dt>Available quantity:</dt>
+                <dd>{product.available_quantity}</dd>
               </dl>
-            </div>
-            </div>
-          </div>
-
-          <div className="quantity-white-box">
-          <div className="quantity-box"> 
-          <dl>
-            <dd className="quantity-available">Quantity Available:</dd>
-            <dt className="quantity-available">{product.available_quantity}</dt>
-            <dd className="io-history">I/O History</dd>
-            <div className="io-history-day">
-              <p className="io-date">{today_string}</p>
-              <p className="io-input">{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</p>
-              <p className="io-output">{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</p>
-            </div>
-            <div className="io-history-day">
-              <p className="io-date">{yesterday_string}</p>
-              <p className="io-input">{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</p>
-              <p className="io-output">{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</p>
-            </div>
-            <div className="io-history-day">
-              <p className="io-date">{beforeYesterday_string}</p>
-              <p className="io-input">{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</p>
-              <p className="io-output">{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</p>
-            </div>
-          </dl>
-          </div>
-          </div>
-          </div>  
+              <Link to='/'>Back to products list</Link>
+            </Col>
+          </Row>
         </Container>
       );
     }
@@ -181,3 +147,61 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);
+
+{/* <Container>
+  <div className="product-description-header">
+    <Row>
+      <Link to='/'>
+        <i className="icono-arrow1-left"></i>
+      </Link><h1 className="big-title">{product.name}</h1>
+    </Row>
+  </div>
+
+  <div className="product-description-body">
+  <div className="item-box-description-container">
+    <div className="item-box-description">
+    <div className="item-box-body">
+      <dl className="item-box-body">
+      <div className="code">
+        <dt className="code">Code: </dt>
+        <dd className="code">{product.code}</dd>
+      </div>
+      <div className="category">
+        <dt className="category">Category:</dt>
+        <dd className="category">{product.category}</dd>
+      </div>
+      <div className="description">
+        <dt className="description">Description:</dt>
+        <dd className="description">{product.description}</dd>
+      </div>
+      </dl>
+    </div>
+    </div>
+  </div>
+
+  <div className="quantity-white-box">
+  <div className="quantity-box"> 
+  <dl>
+    <dd className="quantity-available">Quantity Available:</dd>
+    <dt className="quantity-available">{product.available_quantity}</dt>
+    <dd className="io-history">I/O History</dd>
+    <div className="io-history-day">
+      <p className="io-date">{today_string}</p>
+      <p className="io-input">{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</p>
+      <p className="io-output">{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</p>
+    </div>
+    <div className="io-history-day">
+      <p className="io-date">{yesterday_string}</p>
+      <p className="io-input">{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</p>
+      <p className="io-output">{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</p>
+    </div>
+    <div className="io-history-day">
+      <p className="io-date">{beforeYesterday_string}</p>
+      <p className="io-input">{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</p>
+      <p className="io-output">{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</p>
+    </div>
+  </dl>
+  </div>
+  </div>
+  </div>  
+</Container> */}
