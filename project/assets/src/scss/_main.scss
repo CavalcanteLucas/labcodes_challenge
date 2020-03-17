@@ -1,0 +1,52 @@
+body {
+    background: #E8EFF3;
+    font-family: Lato;
+}
+
+header {
+    background: #EC6056;
+    height: 84px;
+}
+
+a.title {
+    font-family: Bungee;
+    color: white;
+    font-size: 28px;
+}
+
+a.title:hover,
+a.title:focus,
+a.title:visited {
+    text-decoration: none;
+}
+
+h1, h2, h3, p.regular {
+    color: #2E3942
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p.inventory {
+    color: #414F58;
+}
+
+dt {
+    color: #576975;
+}
+
+.btn {
+    background: #007B7D;
+    color: white;
+}
+
+.item-box {
+    background: white;
+    margin: 16px 0;
+    padding: 16px;
+}

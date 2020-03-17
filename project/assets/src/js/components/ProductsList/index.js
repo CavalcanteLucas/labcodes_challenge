@@ -39,12 +39,17 @@ class ProductsList extends React.Component {
       <Container>
           <Row>
             <Col>
-              <h1>Product List</h1>
+              <h1><strong>Product List</strong></h1>
+            </Col>
+            <Col>
+            <h3><strong>Inventory Status</strong></h3>
+            <p className="inventory"><strong>Single products:</strong> { total_items } </p>
+            <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
             </Col>
           </Row>
         
           {products.map(product => (
-            <Row key={product.code}>
+            <Row className="product-list" key={product.code}>
               <Col>
                 <Product {...product}/>
               </Col>
