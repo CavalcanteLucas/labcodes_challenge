@@ -1,0 +1,23 @@
+.detail-box, .quantity-box{
+    background: white;
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+p.io-date {
+    color: #2e3942;
+}
+
+p.io-income {
+    color: #168938;
+}
+
+p.io-outcome {
+    color: #c22929;
+}
+
+h3.quantity, 
+h3.history {
+    color: #576975;
+}

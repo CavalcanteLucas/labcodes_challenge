@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Product(props){
 
   return (
-    <div className="item-box">
+    <div className="box">
       <dt>Name:</dt>
       <h2><strong>{props.name}</strong></h2>
       <p className="regular"><strong>Code:</strong> {props.code}</p>

@@ -20,7 +20,10 @@ a.title:visited {
     text-decoration: none;
 }
 
-h1, h2, h3, p.regular {
+h1, 
+h2, 
+h3, 
+p.regular {
     color: #2E3942
 }
 
@@ -32,21 +35,13 @@ h3 {
     font-size: 20px;
 }
 
-p.inventory {
-    color: #414F58;
-}
-
 dt {
     color: #576975;
 }
 
-.btn {
-    background: #007B7D;
-    color: white;
-}
-
-.item-box {
+.box {
     background: white;
     margin: 16px 0;
     padding: 16px;
+    border-radius: 8px;
 }

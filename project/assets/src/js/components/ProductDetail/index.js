@@ -103,28 +103,35 @@ class ProductsDetail extends React.Component {
       return (
         <Container>
           <Row>
-            <Col>
-              <h1>{product.name}</h1>
+            <Link to='/'><i className="icono-arrow1-left"></i></Link>
+            <h1><strong>{product.name}</strong></h1>
+          </Row>
+
+          <Row>
+            <Col className="box">
+                <p><strong>Code: </strong>{product.code}</p>
+                <p><strong>Category: </strong>{product.category}</p>
+                <p><strong>Description: </strong>{product.description}</p>     
             </Col>
           </Row>
 
           <Row>
-            <Col>
-              <dl>
-                <dt>Code:</dt>
-                <dd>{product.code}</dd>
-                {product.description &&
-                  <React.Fragment>
-                    <dt>Description:</dt>
-                    <dd>{product.description}</dd>
-                  </React.Fragment>
-                }
-                <dt>Available quantity:</dt>
-                <dd>{product.available_quantity}</dd>
-              </dl>
-              <Link to='/'>Back to products list</Link>
+            <Col className="box">
+              <h3 className="quantity"><strong>Quantity Available</strong></h3>
+              <h1><strong>{product.available_quantity}</strong></h1>
+              <h3 className="history"><strong>I/O History</strong></h3>
+                <p className="io-date">{today_string}</p>
+                <p className="io-income"><strong>{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</strong></p>
+                <p className="io-outcome"><strong>{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</strong></p>
+                <p className="io-date">{yesterday_string}</p>
+                <p className="io-income"><strong>{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</strong></p>
+                <p className="io-outcome"><strong>{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</strong></p>
+                <p className="io-date">{beforeYesterday_string}</p>
+                <p className="io-income"><strong>{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</strong></p>
+                <p className="io-outcome"><strong>{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</strong></p>
             </Col>
           </Row>
+
         </Container>
       );
     }
