@@ -23,10 +23,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <header>
-          <div className="wrapper">
-              <a href='/' className="logo"><img src="https://imgbbb.com/images/2020/01/26/icon.png" alt="Logomark"></img></a>
-              <a href='/' className="title">STATIONERY SHOP</a>
-          </div>
+          <a href='/' className="logo"><img src="https://imgbbb.com/images/2020/01/26/icon.png" alt="Logomark"></img></a>
+          <a href='/' className="title">STATIONERY SHOP</a>
         </header>
         <section>
           <Provider store={store}>

@@ -3,10 +3,7 @@ body {
     font-family: Lato;
 }
 
-header {
-    background: #EC6056;
-    height: 84px;
-}
+/* Links */
 
 a.title {
     font-family: Bungee;
@@ -20,11 +17,26 @@ a.title:visited {
     text-decoration: none;
 }
 
+a.title, 
+a.logo {
+    margin: 12px;
+}
+
+/* Typography */
+
+p {
+    margin: 4px 0;
+}
+
 h1, 
 h2, 
 h3, 
 p.regular {
     color: #2E3942
+}
+
+h1 {
+    font-size: 40px;
 }
 
 h2 {
@@ -39,9 +51,31 @@ dt {
     color: #576975;
 }
 
+/* Layout */
+
 .box {
     background: white;
     margin: 16px 0;
     padding: 16px;
     border-radius: 8px;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 128px;
+
+    // background: purple;
+}
+
+/* Header */
+
+header {
+    background: #EC6056;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84px;
+    // border: 10px solid purple;
 }

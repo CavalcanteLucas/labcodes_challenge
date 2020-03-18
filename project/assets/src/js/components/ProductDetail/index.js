@@ -102,10 +102,12 @@ class ProductsDetail extends React.Component {
 
       return (
         <Container>
+          <div className="container-header">
           <Row>
             <Link to='/'><i className="icono-arrow1-left"></i></Link>
             <h1><strong>{product.name}</strong></h1>
           </Row>
+          </div>
 
           <Row>
             <Col className="box">
