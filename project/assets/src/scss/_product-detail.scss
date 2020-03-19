@@ -14,3 +14,17 @@ h3.quantity,
 h3.history {
     color: #576975;
 }
+
+.wrapper-product-detail {
+    align-items: flex-start; 
+    // border: 10px solid yellow;
+}
+
+
+.box-quantity {
+    padding: 1rem;
+}
+
+.io-history-day {
+    display: flex;
+}

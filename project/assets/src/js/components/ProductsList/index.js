@@ -36,28 +36,39 @@ class ProductsList extends React.Component {
     }
 
     return (
-      <div>
-        <Container>
-        <div className="container-header">
-          <h1><strong>Product List</strong></h1>
-          <div className="box-inventory">
-            <h3><strong>Inventory Status</strong></h3>
-            <p className="inventory"><strong>Single products:</strong> { total_items } </p>
-            <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
-          </div>
-        </div>
-        </Container>
-        
-        <Container>
-          {products.map(product => (
-            <Row className="product-list" key={product.code}>
-              <Col>
-                <Product {...product}/>
+      <Container>
+          <div className="shop-body-top-wrapper">
+          {/* <Container> */}
+            <Row className="align-items-center p-4">
+              <Col xs={6} lg={{ span: 5, offset: 1}}>
+                  <h1><strong>Product List</strong></h1>
+              </Col>
+              <Col xs={6} md={{ span: 5, offset:1 }} xl={{offset: 2}}>
+                <div className="box-inventory-status">
+                  <h3><strong>Inventory Status</strong></h3>
+                  <p className="inventory"><strong>Single products:</strong> { total_items } </p>
+                  <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
+                </div>
               </Col>
             </Row>
-          ))}
+            {/* </Container> */}
+          </div>
+
+        <Container>
+          <Row>
+            {products.map( (product, index) => (
+              index % 2 === 0 ? (
+                <Col xs={12} md={6} lg={{span:5, offset:1}} key={product.code}>
+                  <Product {...product}/>
+                </Col>
+              ):(
+                <Col xs={12} md={6} lg={{span:5}} key={product.code}>
+                  <Product {...product}/>
+                </Col>
+              )))}
+          </Row>
+        </Container>
       </Container>
-    </div>
     );
   }
 }

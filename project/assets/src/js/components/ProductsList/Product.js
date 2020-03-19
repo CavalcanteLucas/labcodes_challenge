@@ -1,16 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function Product(props){
 
   return (
-    <div className="box">
-      <dt>Name:</dt>
-      <h2><strong>{props.name}</strong></h2>
-      <p className="regular"><strong>Code:</strong> {props.code}</p>
-      <p className="regular"><strong>Category:</strong> {props.category}</p>
-      <a href={`/${props.code}/`} className="btn">See Details</a>
-    </div>
+
+    <Container className="box-item-list">
+          <dt>Name:</dt>
+          <h2><strong>{props.name}</strong></h2>
+      <p className="separator"></p>
+      <Row>
+        <Col xs={7} md={6} xl={7}>
+          <p className="regular"><strong>Code:</strong> {props.code}</p>
+          <p className="regular"><strong>Category:</strong> {props.category}</p>
+        </Col>
+        <Col xs={{ span: 4, offset: 1}} md={5} xl={4} className="align-self-end">
+          <Link to={`/${props.code}/`} className="btn">See Details</Link>
+        </Col>
+      </Row>
+    </Container>
   );
 }
  

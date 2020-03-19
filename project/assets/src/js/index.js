@@ -22,9 +22,11 @@ class App extends React.Component {
   render () {
     return (
       <div className="app">
-        <header>
-          <a href='/' className="logo"><img src="https://imgbbb.com/images/2020/01/26/icon.png" alt="Logomark"></img></a>
-          <a href='/' className="title">STATIONERY SHOP</a>
+        <header className="shop-header">
+          <div className="shop-header-wrapper">
+            <a href='/' className="logo"><img src="https://imgbbb.com/images/2020/01/26/icon.png" alt="Logomark"></img></a>
+            <a href='/' className="title">STATIONERY SHOP</a>
+          </div>
         </header>
         <section>
           <Provider store={store}>

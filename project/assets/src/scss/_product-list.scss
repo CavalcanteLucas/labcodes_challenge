@@ -8,13 +8,13 @@ p.inventory {
     background: #007B7D;
     color: white;
     text-decoration: none;
+    display: block;
+    white-space: nowrap;
 }
 
-.box-inventory{
-    height: 112px;
-    width: 254px;
-    padding: 16px;
-
-    // background: magenta;
-    // border: 10px solid black;
+.box-inventory-status {
+    // height: 112px;
+    // width: 254px;
+    // padding: 16px;
+    background: magenta
 }

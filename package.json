@@ -51,6 +51,7 @@
     "react-router-dom": "^5.0.1",
     "react-spinners-kit": "^1.9.0",
     "react-timer-mixin": "^0.13.4",
+    "react-truncate": "^2.4.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "whatwg-fetch": "^3.0.0"

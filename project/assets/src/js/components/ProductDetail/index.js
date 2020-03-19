@@ -102,38 +102,50 @@ class ProductsDetail extends React.Component {
 
       return (
         <Container>
-          <div className="container-header">
-          <Row>
-            <Link to='/'><i className="icono-arrow1-left"></i></Link>
-            <h1><strong>{product.name}</strong></h1>
-          </Row>
+          <div className="shop-body-top-wrapper">
+            <Row>
+              <Col xs={1} lg={{ offset: 1 }}>
+                <Link to='/'><i className="icono-arrow1-left"></i></Link>
+              </Col>
+              <Col xs={11} lg={{span:10}}>
+                <h1><strong>{product.name}</strong></h1>
+              </Col>
+            </Row>
           </div>
 
-          <Row>
-            <Col className="box">
-                <p><strong>Code: </strong>{product.code}</p>
-                <p><strong>Category: </strong>{product.category}</p>
-                <p><strong>Description: </strong>{product.description}</p>     
+          <Container>
+          <Row className="wrapper-product-detail">
+            <Col xs={12} md={7} lg={{ span: 6, offset: 1}} className="box-item-detail">
+                <Container>
+                  <p className="regular"><strong>Code: </strong>{product.code}</p>
+                  <p className="regular"><strong>Category: </strong>{product.category}</p>
+                  <p className="regular"><strong>Description: </strong>{product.description}</p>     
+                </Container>
             </Col>
-          </Row>
-
-          <Row>
-            <Col className="box">
-              <h3 className="quantity"><strong>Quantity Available</strong></h3>
+          
+            <Col xs={9} md={{ span: 4}} lg={{ span: 3}} className="box-quantity">
+              <h3 className="quantity"><strong>Quantity Available:</strong></h3>
               <h1><strong>{product.available_quantity}</strong></h1>
+              <p className="separator"></p>
               <h3 className="history"><strong>I/O History</strong></h3>
+              <div className="io-history-day">
                 <p className="io-date">{today_string}</p>
                 <p className="io-income"><strong>{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</strong></p>
                 <p className="io-outcome"><strong>{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</strong></p>
+              </div>
+              <div className="io-history-day">
                 <p className="io-date">{yesterday_string}</p>
                 <p className="io-income"><strong>{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</strong></p>
                 <p className="io-outcome"><strong>{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</strong></p>
+              </div>
+              <div className="io-history-day">
                 <p className="io-date">{beforeYesterday_string}</p>
                 <p className="io-income"><strong>{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</strong></p>
                 <p className="io-outcome"><strong>{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</strong></p>
+              </div>
             </Col>
           </Row>
-
+          </Container>
         </Container>
       );
     }

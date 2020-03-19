@@ -32,7 +32,8 @@ h1,
 h2, 
 h3, 
 p.regular {
-    color: #2E3942
+    color: #2E3942;
+    white-space: nowrap;
 }
 
 h1 {
@@ -51,31 +52,55 @@ dt {
     color: #576975;
 }
 
-/* Layout */
-
-.box {
-    background: white;
-    margin: 16px 0;
-    padding: 16px;
-    border-radius: 8px;
-}
-
-.container-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 128px;
-
-    // background: purple;
+p.regular,
+h2 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* Header */
 
-header {
+.shop-header {
     background: #EC6056;
+}
+
+.shop-header-wrapper {
+    padding: 0.5em 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 84px;
-    // border: 10px solid purple;
+}
+
+/* Layout */
+
+.shop-body-top-wrapper {
+    // margin: 1rem;
+    background: purple;
+    // position: fixed;
+}
+
+p.separator {
+    border: 1px solid #eaeff3;
+    margin: 1rem -1rem;
+}
+
+
+.box-item-list,
+.box-item-detail,
+.box-quantity {
+    background: white;
+    border-radius: 0.5rem;
+}
+
+.box-item-detail,
+.box-quantity {
+    margin-bottom: 1rem;
+    margin-right: 1.7em;
+    padding: 0.7rem;
+}
+
+.box-item-list {
+    margin-bottom: 1.7rem;
+    padding: 1rem;
 }
