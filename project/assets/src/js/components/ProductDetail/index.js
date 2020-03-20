@@ -120,11 +120,17 @@ class ProductsDetail extends React.Component {
                     <div className="box-item-detail">
                         <p className="regular"><strong>Code: </strong>{product.code}</p>
                         <p className="regular"><strong>Category: </strong>{product.category}</p>
-                        <p className="regular"><strong>Description: </strong>{product.description}</p>     
+                        <div className="description-title"><strong>Description: </strong>
+                          {product.description ? 
+                            <p className="available"> {product.description}</p> 
+                            :
+                            <p className="unavailable"> Unavailable</p>
+                          }
+                        </div>
                     </div>
                 </div>
               </Col>
-            
+
               <Col xs={9} md={{ span: 4}} lg={{ span: 3}}>
                 <div className="box-quantity">
                   <h3 className="quantity"><strong>Quantity Available:</strong></h3>
@@ -172,61 +178,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);
-
-{/* <Container>
-  <div className="product-description-header">
-    <Row>
-      <Link to='/'>
-        <i className="icono-arrow1-left"></i>
-      </Link><h1 className="big-title">{product.name}</h1>
-    </Row>
-  </div>
-
-  <div className="product-description-body">
-  <div className="item-box-description-container">
-    <div className="item-box-description">
-    <div className="item-box-body">
-      <dl className="item-box-body">
-      <div className="code">
-        <dt className="code">Code: </dt>
-        <dd className="code">{product.code}</dd>
-      </div>
-      <div className="category">
-        <dt className="category">Category:</dt>
-        <dd className="category">{product.category}</dd>
-      </div>
-      <div className="description">
-        <dt className="description">Description:</dt>
-        <dd className="description">{product.description}</dd>
-      </div>
-      </dl>
-    </div>
-    </div>
-  </div>
-
-  <div className="quantity-white-box">
-  <div className="quantity-box"> 
-  <dl>
-    <dd className="quantity-available">Quantity Available:</dd>
-    <dt className="quantity-available">{product.available_quantity}</dt>
-    <dd className="io-history">I/O History</dd>
-    <div className="io-history-day">
-      <p className="io-date">{today_string}</p>
-      <p className="io-input">{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</p>
-      <p className="io-output">{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</p>
-    </div>
-    <div className="io-history-day">
-      <p className="io-date">{yesterday_string}</p>
-      <p className="io-input">{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</p>
-      <p className="io-output">{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</p>
-    </div>
-    <div className="io-history-day">
-      <p className="io-date">{beforeYesterday_string}</p>
-      <p className="io-input">{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</p>
-      <p className="io-output">{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</p>
-    </div>
-  </dl>
-  </div>
-  </div>
-  </div>  
-</Container> */}

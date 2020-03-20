@@ -1,15 +1,32 @@
 #product-detail {
 
-    p.io-date {
+    .available {
+        margin-bottom: 0;
+        margin-left: 2px;
+    }
+
+    .unavailable {
+        color: #889BA9;
+        margin-bottom: 0;
+        margin-left: 2px;
+    }
+
+    .io-date {
         color: #2e3942;
     }
 
-    p.io-income {
+    .io-income {
         color: #168938;
     }
 
-    p.io-outcome {
+    .io-outcome {
         color: #c22929;
+    }
+
+    .io-date,
+    .io-income,
+    .io-outcome {
+        margin-bottom: 4px;
     }
 
     h3.quantity, 
@@ -18,7 +35,7 @@
     }
 
     .wrapper-product-detail {
-        align-items: flex-start; 
+        align-items: flex-start;
         // border: 10px solid yellow;
     }
 
@@ -28,6 +45,7 @@
 
     .io-history-day {
         display: flex;
+        justify-content: space-between;
     }
 
     .box-item-detail {
@@ -38,6 +56,11 @@
     }
 
     .regular {
+        margin-bottom: 0;
+    }
+
+    .description-title {
+        display: flex;
         margin-bottom: 0;
     }
 
