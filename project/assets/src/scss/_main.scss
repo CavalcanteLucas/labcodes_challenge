@@ -24,16 +24,16 @@ a.logo {
 
 /* Typography */
 
-p {
-    margin: 4px 0;
-}
+// p {
+//     margin: 4px 0;
+// }
 
 h1, 
 h2, 
 h3, 
 p.regular {
     color: #2E3942;
-    white-space: nowrap;
+    // white-space: nowrap;
 }
 
 h1 {
@@ -52,7 +52,6 @@ dt {
     color: #576975;
 }
 
-p.regular,
 h2 {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -75,8 +74,10 @@ h2 {
 /* Layout */
 
 .shop-body-top-wrapper {
-    // margin: 1rem;
-    background: purple;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    // background: purple;
     // position: fixed;
 }
 
@@ -85,22 +86,6 @@ p.separator {
     margin: 1rem -1rem;
 }
 
-
-.box-item-list,
-.box-item-detail,
-.box-quantity {
-    background: white;
-    border-radius: 0.5rem;
-}
-
-.box-item-detail,
-.box-quantity {
-    margin-bottom: 1rem;
-    margin-right: 1.7em;
-    padding: 0.7rem;
-}
-
-.box-item-list {
-    margin-bottom: 1.7rem;
-    padding: 1rem;
+.inventory {
+    margin-bottom: 0;
 }

@@ -1,0 +1,19 @@
+.product-item-list {
+    
+    background: white;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+
+    .separator {
+        border: 1px solid #eaeff3;
+        margin: 1rem -1rem;
+    }
+
+    .regular {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+}

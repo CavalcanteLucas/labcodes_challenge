@@ -38,12 +38,11 @@ class ProductsList extends React.Component {
     return (
       <Container>
           <div className="shop-body-top-wrapper">
-          {/* <Container> */}
-            <Row className="align-items-center p-4">
-              <Col xs={6} lg={{ span: 5, offset: 1}}>
+            <Row className="align-items-center">
+              <Col xs={6} md={8} lg={{ span: 7, offset: 1}}>
                   <h1><strong>Product List</strong></h1>
               </Col>
-              <Col xs={6} md={{ span: 5, offset:1 }} xl={{offset: 2}}>
+              <Col xs={6} md={4} lg={{ span: 3 }}>
                 <div className="box-inventory-status">
                   <h3><strong>Inventory Status</strong></h3>
                   <p className="inventory"><strong>Single products:</strong> { total_items } </p>
@@ -51,10 +50,8 @@ class ProductsList extends React.Component {
                 </div>
               </Col>
             </Row>
-            {/* </Container> */}
           </div>
 
-        <Container>
           <Row>
             {products.map( (product, index) => (
               index % 2 === 0 ? (
@@ -67,7 +64,6 @@ class ProductsList extends React.Component {
                 </Col>
               )))}
           </Row>
-        </Container>
       </Container>
     );
   }
