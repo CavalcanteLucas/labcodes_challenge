@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 export default function Product(props){
 
@@ -15,7 +15,7 @@ export default function Product(props){
             <p className="regular"><strong>Category:</strong> {props.category}</p>
           </Col>
           <Col xs={{ span: 4, offset: 1}} md={5} xl={4} className="align-self-end">
-            <Link to={`/${props.code}/`} className="btn">See Details</Link>
+            <Button href={`/${props.code}/`} className="btn">See Details</Button>
           </Col>
         </Row>
     </div>

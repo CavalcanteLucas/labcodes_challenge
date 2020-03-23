@@ -1,0 +1,20 @@
+.btn {
+    cursor: pointer;
+    background: #007B7D;
+    border: 0px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    outline: none;
+}
+
+.btn:hover {
+    box-shadow: 0 0 0 3px #009EA1;
+    background: #004748;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 3px #009EA1, inset 0 0 0 3px #54DEDC;
+    background: #004748;
+}
