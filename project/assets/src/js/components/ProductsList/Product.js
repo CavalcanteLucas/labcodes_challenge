@@ -15,7 +15,7 @@ export default function Product(props){
             <p className="regular"><strong>Category:</strong> {props.category}</p>
           </Col>
           <Col xs={{ span: 4, offset: 1}} md={5} xl={4} className="align-self-end">
-            <Button href={`/${props.code}/`} className="btn">See Details</Button>
+            <Link to={`/${props.code}/`} variant="link" className="btn">See Details</Link>
           </Col>
         </Row>
     </div>

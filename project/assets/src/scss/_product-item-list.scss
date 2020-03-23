@@ -17,7 +17,8 @@
         margin-bottom: 0;
     }
 
-    // .product-item-list:hover {
-    //     background: black !important;
-    // }
+    &:hover {
+        // background: black;
+        filter: invert(1);
+    }
 }
