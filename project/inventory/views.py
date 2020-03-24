@@ -13,10 +13,13 @@ class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['test_var'] = '123'
-        return context
+    # context_object_name = super.get_context_object_name(queryset)
+    # context_object_name = 'test_var'
+    # def get_serializer_context(self, **kwargs):
+    #     context = super().get_serializer_context(**kwargs)
+    #     # context['test_var'] = '123'
+    #     context.update({'test_var': '123'})
+    #     return context
 
     # def get_queryset(self):
     #     return Product.objects.all()
