@@ -13,6 +13,13 @@ class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['test_var'] = '123'
+        return context
+
+    # def get_queryset(self):
+    #     return Product.objects.all()
     # def asdf(self):
     #     return
 
@@ -42,14 +49,15 @@ class UpdateProductQuantityEndpoint(APIView):
 
         if (updated_quantity != 0):
             if (updated_quantity > 0):
-                Log.objects.create(code=product,
-                                date=date.today(),
-                                income=updated_quantity,
-                                outcome=0)
+                income=updated_quantity
+                outcome=0
             else:
-                Log.objects.create(code=product,
+                income=0
+                outcome=-updated_quantity
+
+            Log.objects.create(code=product,
                                 date=date.today(),
-                                income=0,
-                                outcome=-updated_quantity)
+                                income=income,
+                                outcome=outcome)
 
         return Response({'available_quantity': product.available_quantity})

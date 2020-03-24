@@ -46,7 +46,7 @@ class ProductsList extends React.Component {
                 <div className="box-inventory-status">
                   <h3><strong>Inventory Status</strong></h3>
                   <p className="inventory"><strong>Single products:</strong> { total_items } </p>
-                  <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
+                  <p className="inventory"><strong>Total items in stock:</strong> {{ test_var }} </p>
                 </div>
               </Col>
             </Row>
