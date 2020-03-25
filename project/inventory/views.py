@@ -15,11 +15,11 @@ class ListInventoryEndpoint(ListAPIView):
 
     # context_object_name = super.get_context_object_name(queryset)
     # context_object_name = 'test_var'
-    # def get_serializer_context(self, **kwargs):
-    #     context = super().get_serializer_context(**kwargs)
-    #     # context['test_var'] = '123'
-    #     context.update({'test_var': '123'})
-    #     return context
+    def get_serializer_context(self, **kwargs):
+        context = super().get_serializer_context(**kwargs)
+        # context['test_var'] = '123'
+        context.update({'test_var': '123'})
+        return context
 
     # def get_queryset(self):
     #     return Product.objects.all()
@@ -59,8 +59,8 @@ class UpdateProductQuantityEndpoint(APIView):
                 outcome=-updated_quantity
 
             Log.objects.create(code=product,
-                                date=date.today(),
-                                income=income,
-                                outcome=outcome)
+                               date=date.today(),
+                               income=income,
+                               outcome=outcome)
 
         return Response({'available_quantity': product.available_quantity})
