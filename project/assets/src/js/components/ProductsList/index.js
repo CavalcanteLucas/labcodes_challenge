@@ -19,6 +19,8 @@ class ProductsList extends React.Component {
 
     const { isLoading, products } = this.props;
 
+    // console.log(test_var)
+
     let total_items = products.length;
     let total_items_in_stock = 0;
     for (var i = 0; i < total_items; i++) {
@@ -47,6 +49,7 @@ class ProductsList extends React.Component {
                   <h3><strong>Inventory Status</strong></h3>
                   <p className="inventory"><strong>Single products:</strong> { total_items } </p>
                   <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
+                  {/* <p> { test_var } </p> */}
                   <p> asdf </p>
                 </div>
               </Col>
@@ -70,6 +73,7 @@ class ProductsList extends React.Component {
   }
 }
 
+// const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, products: state.products.items, test_var: state.products.test_var });
 const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, products: state.products.items });
 const mapDispatchToProps = (dispatch) => ({ fetchProducts: () => dispatch(fetchProducts()) });
 

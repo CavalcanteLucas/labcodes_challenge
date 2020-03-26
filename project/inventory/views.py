@@ -12,19 +12,8 @@ from datetime import date
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
-    # context_object_name = super.get_context_object_name(queryset)
-    # context_object_name = 'test_var'
-    def get_serializer_context(self, **kwargs):
-        context = super().get_serializer_context(**kwargs)
-        # context['test_var'] = '123'
-        context.update({'test_var': '123'})
-        return context
-
-    # def get_queryset(self):
-    #     return Product.objects.all()
-    # def asdf(self):
-    #     return
+    # test_var = 123
+    # serializer_class = ProductSerializer(context={'test_var': test_var})
 
 
 class ListLogEndpoint(ListAPIView):

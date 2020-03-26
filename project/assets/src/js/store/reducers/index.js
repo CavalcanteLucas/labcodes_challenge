@@ -37,11 +37,13 @@ const productReducer = (state = initialState, action) => {
       };
 
     case FETCH_PRODUCTS_SUCCESS:
+      // console.log(action.response)
       return {
         ...state,
         isLoading: false,
         items: action.response.data,
-        // total_items_in_stock: 
+        // test_var: action.response.data[0].test_var
+        // total_items_in_stock:
       };
 
     case FETCH_PRODUCT_SUCCESS:
