@@ -4,17 +4,14 @@ from rest_framework.views import APIView, Response
 from django.shortcuts import get_object_or_404
 
 from inventory.models import Product, Log
-from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer
+from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer, InventorySerializer
 
 from datetime import date
 
 
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    # test_var = 123
-    # serializer_class = ProductSerializer(context={'test_var': test_var})
-
+    serializer_class = InventorySerializer
 
 class ListLogEndpoint(ListAPIView):
     queryset = Log.objects.all()
