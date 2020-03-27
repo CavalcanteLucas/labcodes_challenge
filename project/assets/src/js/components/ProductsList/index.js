@@ -17,9 +17,7 @@ class ProductsList extends React.Component {
 
   render(){
 
-    const { isLoading, products, total_items_in_stock } = this.props;
-
-    let total_items = products.length;
+    const { isLoading, items, total_items_in_stock } = this.props;
 
     if (isLoading) {
       return (
@@ -41,7 +39,7 @@ class ProductsList extends React.Component {
               <Col xs={6} md={4} lg={{ span: 3 }}>
                 <div className="box-inventory-status">
                   <h3><strong>Inventory Status</strong></h3>
-                  <p className="inventory"><strong>Single products:</strong> { total_items } </p>
+                  <p className="inventory"><strong>Single products:</strong> { items.length } </p>
                   <p className="inventory"><strong>Total items in stock:</strong> { total_items_in_stock } </p>
                 </div>
               </Col>
@@ -49,7 +47,7 @@ class ProductsList extends React.Component {
           </div>
 
           <Row>
-            {products.map( (product, index) => (
+            {items.map( (product, index) => (
               index % 2 === 0 ? (
                 <Col xs={12} md={6} lg={{span:5, offset:1}} key={product.code}>
                   <Product {...product}/>
@@ -65,7 +63,13 @@ class ProductsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ isLoading: state.products.isLoading, products: state.products.items, total_items_in_stock: state.products.total_items_in_stock });
+const mapStateToProps = ( { products } ) => {
+  const { isLoading, items, total_items_in_stock } = products
+  return {
+    isLoading,
+    items,
+    total_items_in_stock
+}};
 const mapDispatchToProps = (dispatch) => ({ fetchProducts: () => dispatch(fetchProducts()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);

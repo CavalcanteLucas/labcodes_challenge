@@ -35,7 +35,7 @@ export const fetchProduct = (code) => {
 }
 
 export const fetchLog = () => dispatch => {
-  fetch("http://localhost:8000/api/inventory/log/")
+  fetch("/api/inventory/log/")
     .then(response => response.json())
     .then(data => dispatch({
       type: FETCH_IO,

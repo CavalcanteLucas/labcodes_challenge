@@ -14,10 +14,6 @@ class QuantitySerializer(serializers.Serializer):
     quantity = serializers.IntegerField()
 
 
-class InventorySerializer(ProductSerializer):
-    pass
-
-
 class LogSerializer(serializers.ModelSerializer):
 
     class Meta:

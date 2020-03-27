@@ -9,4 +9,5 @@ urlpatterns = [
     path('log/', ListLogEndpoint.as_view(), name='log'),
     path('<slug:code>/update-quantity/', UpdateProductQuantityEndpoint.as_view(), name='update_product_quantity'),
     path('<slug:code>/', ProductDetailEndpoint.as_view(), name='detail'),
+    # path('<slug:code>/history', ProductLogEndpoing.as_view(), name='history')
 ]

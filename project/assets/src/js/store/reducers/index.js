@@ -37,11 +37,12 @@ const productReducer = (state = initialState, action) => {
       };
 
     case FETCH_PRODUCTS_SUCCESS:
+      const { items, total_items_in_stock } = action.response.data
       return {
         ...state,
         isLoading: false,
-        items: action.response.data.load,
-        total_items_in_stock: action.response.data.context.total_items_in_stock
+        items,
+        total_items_in_stock
       };
 
     case FETCH_PRODUCT_SUCCESS:
