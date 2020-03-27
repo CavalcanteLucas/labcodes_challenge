@@ -8,10 +8,23 @@ from inventory.serializers import ProductSerializer, QuantitySerializer, LogSeri
 
 from datetime import date
 
-
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
-    serializer_class = InventorySerializer
+    serializer_class = ProductSerializer
+
+    def list(self, request, *args, **kwargs):
+        serializer = self.get_serializer(self.get_queryset(), many=True)
+        load = serializer.data
+        context = {'total_items_in_stock': self.get_total_items_in_stock()}
+        response_list = {'load': load, 'context': context}
+        return Response(response_list)
+    
+    def get_total_items_in_stock(self):
+        product_list = Product.objects.all()
+        total=0
+        for product in product_list:
+            total+=product.available_quantity
+        return total
 
 class ListLogEndpoint(ListAPIView):
     queryset = Log.objects.all()
