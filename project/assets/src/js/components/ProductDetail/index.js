@@ -16,7 +16,7 @@ class ProductsDetail extends React.Component {
 
   render(){
 
-    const { isLoading, product, io_log } = this.props;
+    const { isLoading, product, io_history } = this.props;
 
     if (isLoading) {
       return (
@@ -67,19 +67,19 @@ class ProductsDetail extends React.Component {
                   <p className="separator"></p>
                   <h3 className="history"><strong>I/O History</strong></h3>
                   <div className="io-history-day">
-                    <p className="io-date">{io_log.today_string}</p>
-                    <div className="io-income"><strong>{io_log.today_income > 0 ? <div><i className="icono-arrow2-down"></i>{io_log.today_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_log.today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_log.today_outcome}</div>: '---'}</strong></div>
+                    <p className="io-date">{io_history[0].date_string}</p>
+                    <div className="io-income"><strong>{io_history[0].income > 0 ? <div><i className="icono-arrow2-down"></i>{io_history[0].income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_history[0].outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_history[0].outcome}</div>: '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
-                    <p className="io-date">{io_log.yesterday_string}</p>
-                    <div className="io-income"><strong>{io_log.yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.yesterday_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_log.yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.yesterday_outcome}</div> : '---'}</strong></div>
+                    <p className="io-date">{io_history[1].date_string}</p>
+                    <div className="io-income"><strong>{io_history[1].income !=0 ? <div><i className="icono-arrow2-down"></i>{io_history[1].income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_history[1].outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_history[1].outcome}</div> : '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
-                    <p className="io-date">{io_log.beforeYesterday_string}</p>
-                    <div className="io-income"><strong>{io_log.beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.beforeYesterday_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_log.beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.beforeYesterday_outcome}</div> : '---'}</strong></div>
+                    <p className="io-date">{io_history[2].date_string}</p>
+                    <div className="io-income"><strong>{io_history[2].income !=0 ? <div><i className="icono-arrow2-down"></i>{io_history[2].income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_history[2].outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_history[2].outcome}</div> : '---'}</strong></div>
                   </div>
                 </div>
               </Col>
@@ -96,7 +96,7 @@ const mapStateToProps = (state) => {
   return { 
     isLoading: state.products.isLoading, 
     product: state.products.selectedItem,
-    io_log: state.products.io_log
+    io_history: state.products.io_history
   }
 };
 

@@ -38,12 +38,12 @@ const productReducer = (state = initialState, action) => {
       };
 
     case FETCH_PRODUCT_SUCCESS:
-      const { selectedItem, io_log } = action.response.data
+      const { selectedItem, io_history } = action.response.data
       return {
         ...state,
         isLoading: false,
         selectedItem,
-        io_log
+        io_history
       };
 
     case FETCH_PRODUCT_FAILURE:

@@ -4,7 +4,8 @@ from rest_framework.views import APIView, Response
 from django.shortcuts import get_object_or_404
 
 from inventory.models import Product, Log
-from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer
+from inventory.serializers import ProductSerializer, QuantitySerializer, \
+                                  LogSerializer
 
 from datetime import date, timedelta
 
@@ -37,36 +38,27 @@ class ProductDetailEndpoint(RetrieveAPIView):
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'code'
 
-
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        io_log = IOLog(instance)
         serializer = self.get_serializer(instance)
         context = {
             'selectedItem': serializer.data,
-            'io_log': io_log.serialize(),
+            'io_history': [
+                IOHistory(instance, 1).serialize(),
+                IOHistory(instance, 2).serialize(),
+                IOHistory(instance, 3).serialize(),
+            ]
         }
         return Response(context)
 
 
-class IOLog(object):
+class IOHistory(object):
 
-    def __init__(self, instance):
-        today = date.today()
-        yesterday = today - timedelta(days=1)
-        beforeYesterday = yesterday - timedelta(days=1)
-
-        self.today_string = today.strftime("%d/%m/%Y")
-        self.yesterday_string = yesterday.strftime("%d/%m/%Y")
-        self.beforeYesterday_string = beforeYesterday.strftime("%d/%m/%Y")
-
-        today_log = Log.objects.filter(code=instance.code, date=today)
-        yesterday_log = Log.objects.filter(code=instance.code, date=yesterday)
-        beforeYesterday_log = Log.objects.filter(code=instance.code, date=beforeYesterday)
-
-        self.today_income, self.today_outcome = self.log_into_io(today_log)
-        self.yesterday_income, self.yesterday_outcome = self.log_into_io(yesterday_log)
-        self.beforeYesterday_income, self.beforeYesterday_outcome = self.log_into_io(beforeYesterday_log)
+    def __init__(self,instance, no_of_days=1):
+        the_date = date.today() - timedelta(days=no_of_days-1)
+        self.date_string = the_date.strftime("%d/%m/%Y")
+        date_log = Log.objects.filter(code=instance.code, date=the_date)
+        self.income, self.outcome = self.log_into_io(date_log)
 
     def log_into_io(self, log):
         income_log, outcome_log = [], []
@@ -77,15 +69,9 @@ class IOLog(object):
 
     def serialize(self):
         return {
-            'today_string': self.today_string,
-            'today_income': self.today_income,
-            'today_outcome': self.today_outcome,
-            'yesterday_string': self.yesterday_string,
-            'yesterday_income': self.yesterday_income,
-            'yesterday_outcome': self.yesterday_outcome,
-            'beforeYesterday_string': self.beforeYesterday_string,
-            'beforeYesterday_income': self.beforeYesterday_income,
-            'beforeYesterday_outcome': self.beforeYesterday_outcome
+            'date_string': self.date_string,
+            'income': self.income,
+            'outcome': self.outcome,
         }
 
 
