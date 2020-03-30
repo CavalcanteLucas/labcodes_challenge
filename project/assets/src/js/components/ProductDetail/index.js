@@ -7,18 +7,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { fetchProduct, fetchLog } from '../../store/actions';
 import '../../../scss/arrow.scss';
 
-// set date strings
-var date = new Date();
-const today = date;
-date.setDate(date.getDate()-1);
-const yesterday = date;
-date.setDate(date.getDate()-1);
-const beforeYesterday = date;
-
-var today_string = today.toLocaleDateString('pt-BR');
-var yesterday_string = yesterday.toLocaleDateString('pt-BR');
-var beforeYesterday_string = beforeYesterday.toLocaleDateString('pt-BR');
-
 class ProductsDetail extends React.Component {
 
   componentDidMount(){
@@ -79,17 +67,17 @@ class ProductsDetail extends React.Component {
                   <p className="separator"></p>
                   <h3 className="history"><strong>I/O History</strong></h3>
                   <div className="io-history-day">
-                    <p className="io-date">{today_string}</p>
+                    <p className="io-date">{io_log.today_string}</p>
                     <div className="io-income"><strong>{io_log.today_income > 0 ? <div><i className="icono-arrow2-down"></i>{io_log.today_income}</div> : '---'}</strong></div>
                     <div className="io-outcome"><strong>{io_log.today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_log.today_outcome}</div>: '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
-                    <p className="io-date">{yesterday_string}</p>
+                    <p className="io-date">{io_log.yesterday_string}</p>
                     <div className="io-income"><strong>{io_log.yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.yesterday_income}</div> : '---'}</strong></div>
                     <div className="io-outcome"><strong>{io_log.yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.yesterday_outcome}</div> : '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
-                    <p className="io-date">{beforeYesterday_string}</p>
+                    <p className="io-date">{io_log.beforeYesterday_string}</p>
                     <div className="io-income"><strong>{io_log.beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.beforeYesterday_income}</div> : '---'}</strong></div>
                     <div className="io-outcome"><strong>{io_log.beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.beforeYesterday_outcome}</div> : '---'}</strong></div>
                   </div>

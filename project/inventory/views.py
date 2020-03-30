@@ -56,6 +56,10 @@ class IOLog(object):
         yesterday = today - timedelta(days=1)
         beforeYesterday = yesterday - timedelta(days=1)
 
+        self.today_string = today.strftime("%d/%m/%Y")
+        self.yesterday_string = yesterday.strftime("%d/%m/%Y")
+        self.beforeYesterday_string = beforeYesterday.strftime("%d/%m/%Y")
+
         today_log = Log.objects.filter(code=instance.code, date=today)
         yesterday_log = Log.objects.filter(code=instance.code, date=yesterday)
         beforeYesterday_log = Log.objects.filter(code=instance.code, date=beforeYesterday)
@@ -73,10 +77,13 @@ class IOLog(object):
 
     def serialize(self):
         return {
+            'today_string': self.today_string,
             'today_income': self.today_income,
             'today_outcome': self.today_outcome,
+            'yesterday_string': self.yesterday_string,
             'yesterday_income': self.yesterday_income,
             'yesterday_outcome': self.yesterday_outcome,
+            'beforeYesterday_string': self.beforeYesterday_string,
             'beforeYesterday_income': self.beforeYesterday_income,
             'beforeYesterday_outcome': self.beforeYesterday_outcome
         }
