@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 
 from inventory.models import Product, Log
 from inventory.serializers import ProductSerializer, QuantitySerializer, \
-                                  LogSerializer#, IOHistorySerializer
+                                  LogSerializer, IOHistorySerializer
 
 from datetime import date, timedelta
 
@@ -41,22 +41,21 @@ class ProductDetailEndpoint(RetrieveAPIView):
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
+        quantity = request.GET.get('quantity', 3)
         context = {
             'selectedItem': serializer.data,
-            'io_history': [
-                IOHistory(instance, 1).serialize(),
-                IOHistory(instance, 2).serialize(),
-                IOHistory(instance, 3).serialize(),
-            ]
+            'io_history': self.get_io_history(instance, quantity)
         }
         return Response(context)
 
+    def get_io_history(self, instance, quantity):
+        return [ IOHistorySerializer(IOHistory(instance, date)).data for date in range(quantity) ]
+
 
 class IOHistory(object):
-    # serializer_class = IOHistorySerializer
 
-    def __init__(self,instance, no_of_days=1):
-        the_date = date.today() - timedelta(days=no_of_days-1)
+    def __init__(self, instance, no_of_days=1):
+        the_date = date.today() - timedelta(days=no_of_days)
         self.date_string = the_date.strftime("%d/%m/%Y")
         date_log = Log.objects.filter(code=instance.code, date=the_date)
         self.income, self.outcome = self.log_into_io(date_log)
@@ -67,14 +66,6 @@ class IOHistory(object):
             income_log.append(log_entry.income)
             outcome_log.append(log_entry.outcome)
         return (sum(income_log), sum(outcome_log))
-
-    def serialize(self):
-        return {
-            'date_string': self.date_string,
-            'income': self.income,
-            'outcome': self.outcome,
-        }
-
 
 class UpdateProductQuantityEndpoint(APIView):
 

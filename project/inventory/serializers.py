@@ -20,7 +20,7 @@ class LogSerializer(serializers.ModelSerializer):
         model = Log
         fields = '__all__'
 
-# class IOHistorySerializer(serializers.Serializer):
-#     date_string = serializers.CharField(max_length=10)
-#     income = serializers.IntegerField()
-#     outcome = serializers.IntegerField()
+class IOHistorySerializer(serializers.Serializer):
+    date_string = serializers.CharField(max_length=10)
+    income = serializers.IntegerField()
+    outcome = serializers.IntegerField()
