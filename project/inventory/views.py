@@ -52,7 +52,7 @@ class ProductDetailEndpoint(RetrieveAPIView):
         return [ IOHistorySerializer(IOHistory(instance, date)).data for date in range(quantity) ]
 
 
-class IOHistory(object):
+class IOHistory:
 
     def __init__(self, instance, no_of_days=1):
         the_date = date.today() - timedelta(days=no_of_days)
