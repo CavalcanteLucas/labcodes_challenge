@@ -7,30 +7,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { fetchProduct, fetchLog } from '../../store/actions';
 import '../../../scss/arrow.scss';
 
-function dateToString(date){
-// producing date strings for I/O history
-  let dd = String(date.getDate()).padStart(2, '0');
-  let mm = String(date.getMonth() + 1).padStart(2, '0');
-  let yyyy = date.getFullYear();
-  return (dd + '/' + mm + '/' + yyyy);
-}
-
-function dateConvertFormat(date){
-  let [yyyy,mm,dd] = date.split('-');
-  return (dd + '/' + mm + '/' + yyyy)
-}
-
-// export default getValues;
+// set date strings
 var date = new Date();
 const today = date;
-var today_string = dateToString(today);
-date.setDate(date.getDate()-1)
+date.setDate(date.getDate()-1);
 const yesterday = date;
-var yesterday_string = dateToString(yesterday);
-date.setDate(date.getDate()-1)
+date.setDate(date.getDate()-1);
 const beforeYesterday = date;
-var beforeYesterday_string = dateToString(beforeYesterday);
 
+var today_string = today.toLocaleDateString('pt-BR');
+var yesterday_string = yesterday.toLocaleDateString('pt-BR');
+var beforeYesterday_string = beforeYesterday.toLocaleDateString('pt-BR');
 
 class ProductsDetail extends React.Component {
 
@@ -40,7 +27,7 @@ class ProductsDetail extends React.Component {
   }
 
   render(){
-    
+
     const { isLoading, product, io_log } = this.props;
 
     if (isLoading) {
@@ -128,6 +115,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({ 
   fetchProduct: (code) => dispatch(fetchProduct(code)),
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsDetail);

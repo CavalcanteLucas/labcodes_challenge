@@ -40,9 +40,7 @@ class ProductDetailEndpoint(RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-
         io_log = IOLog(instance)
-        # from IPython import embed; embed()
         serializer = self.get_serializer(instance)
         context = {
             'selectedItem': serializer.data,
