@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from inventory.models import Product, Log
 from inventory.serializers import ProductSerializer, QuantitySerializer, LogSerializer
 
-from datetime import date
+from datetime import date, timedelta
 
 class ListInventoryEndpoint(ListAPIView):
     queryset = Product.objects.all()
@@ -14,11 +14,11 @@ class ListInventoryEndpoint(ListAPIView):
 
     def list(self, request, *args, **kwargs):
         serializer = self.get_serializer(self.get_queryset(), many=True)
-        response_list = {
+        context = {
             'items': serializer.data, 
             'total_items_in_stock': self.get_total_items_in_stock()
         }
-        return Response(response_list)
+        return Response(context)
 
     def get_total_items_in_stock(self):
         product_list = Product.objects.all()
@@ -37,13 +37,51 @@ class ProductDetailEndpoint(RetrieveAPIView):
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'code'
 
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        log_raw = Log.objects.filter(code=instance.code)
 
+        io_log = IOLog(instance)
         # from IPython import embed; embed()
         serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+        context = {
+            'selectedItem': serializer.data,
+            'io_log': io_log.serialize(),
+        }
+        return Response(context)
+
+
+class IOLog(object):
+
+    def __init__(self, instance):
+        today = date.today()
+        yesterday = today - timedelta(days=1)
+        beforeYesterday = yesterday - timedelta(days=1)
+
+        today_log = Log.objects.filter(code=instance.code, date=today)
+        yesterday_log = Log.objects.filter(code=instance.code, date=yesterday)
+        beforeYesterday_log = Log.objects.filter(code=instance.code, date=beforeYesterday)
+
+        self.today_income, self.today_outcome = self.log_into_io(today_log)
+        self.yesterday_income, self.yesterday_outcome = self.log_into_io(yesterday_log)
+        self.beforeYesterday_income, self.beforeYesterday_outcome = self.log_into_io(beforeYesterday_log)
+
+    def log_into_io(self, log):
+        income_log, outcome_log = [], []
+        for log_entry in log:
+            income_log.append(log_entry.income)
+            outcome_log.append(log_entry.outcome)
+        return (sum(income_log), sum(outcome_log))
+
+    def serialize(self):
+        return {
+            'today_income': self.today_income,
+            'today_outcome': self.today_outcome,
+            'yesterday_income': self.yesterday_income,
+            'yesterday_outcome': self.yesterday_outcome,
+            'beforeYesterday_income': self.beforeYesterday_income,
+            'beforeYesterday_outcome': self.beforeYesterday_outcome
+        }
 
 
 class UpdateProductQuantityEndpoint(APIView):

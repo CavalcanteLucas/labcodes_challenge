@@ -7,7 +7,6 @@ import {
   FETCH_PRODUCT,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
-  FETCH_IO,
 } from '../actions';
 
 const initialState = {
@@ -29,13 +28,6 @@ const productReducer = (state = initialState, action) => {
         error: null
       };
 
-    case FETCH_IO:
-      return{
-        ...state,
-        isLoading: false,
-        log: action.log
-      };
-
     case FETCH_PRODUCTS_SUCCESS:
       const { items, total_items_in_stock } = action.response.data
       return {
@@ -46,10 +38,12 @@ const productReducer = (state = initialState, action) => {
       };
 
     case FETCH_PRODUCT_SUCCESS:
+      const { selectedItem, io_log } = action.response.data
       return {
         ...state,
         isLoading: false,
-        selectedItem: action.response.data,
+        selectedItem,
+        io_log
       };
 
     case FETCH_PRODUCT_FAILURE:

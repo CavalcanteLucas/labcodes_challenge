@@ -7,18 +7,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { fetchProduct, fetchLog } from '../../store/actions';
 import '../../../scss/arrow.scss';
 
-function sum(total,num) {
-  return total + num;
-}
-
-function income(l) {
-  return l.income;
-}
-
-function outcome(l) {
-  return l.outcome;
-}
-
 function dateToString(date){
 // producing date strings for I/O history
   let dd = String(date.getDate()).padStart(2, '0');
@@ -31,7 +19,6 @@ function dateConvertFormat(date){
   let [yyyy,mm,dd] = date.split('-');
   return (dd + '/' + mm + '/' + yyyy)
 }
-
 
 // export default getValues;
 var date = new Date();
@@ -50,12 +37,11 @@ class ProductsDetail extends React.Component {
   componentDidMount(){
       const { code } = this.props.match.params;
       this.props.fetchProduct(code);
-      this.props.fetchLog();
   }
 
   render(){
     
-    const { isLoading, product, log } = this.props;
+    const { isLoading, product, io_log } = this.props;
 
     if (isLoading) {
       return (
@@ -68,38 +54,6 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
-
-      // dispatching io from log
-      let today_income=0;
-      let today_outcome=0;
-      let yesterday_income=0;
-      let yesterday_outcome=0;
-      let beforeYesterday_income=0;
-      let beforeYesterday_outcome=0;
-
-      let filteredLog = log.filter(it => 
-        it.code == product.code);
-
-      const todayLog           = filteredLog.filter(it => 
-        dateConvertFormat(it.date) == today_string);
-      const yesterdayLog       = filteredLog.filter(it => 
-        dateConvertFormat(it.date) == yesterday_string);
-      const beforeYesterdayLog = filteredLog.filter(it => 
-        dateConvertFormat(it.date) == beforeYesterday_string);
-
-      if (todayLog.length) {
-        today_income            = todayLog.map(income).reduce(sum);
-        today_outcome           = todayLog.map(outcome).reduce(sum);
-      }
-      if (yesterdayLog.length) {
-        yesterday_income        = yesterdayLog.map(income).reduce(sum);
-        yesterday_outcome       = yesterdayLog.map(outcome).reduce(sum);
-      }
-      if (beforeYesterdayLog.length) {
-        beforeYesterday_income  = beforeYesterdayLog.map(income).reduce(sum);
-        beforeYesterday_outcome = beforeYesterdayLog.map(outcome).reduce(sum);
-      }
-
       return (
         <div id="product-detail">
           <Container>
@@ -139,18 +93,18 @@ class ProductsDetail extends React.Component {
                   <h3 className="history"><strong>I/O History</strong></h3>
                   <div className="io-history-day">
                     <p className="io-date">{today_string}</p>
-                    <div className="io-income"><strong>{today_income > 0 ? <div><i className="icono-arrow2-down"></i>{today_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{today_outcome}</div>: '---'}</strong></div>
+                    <div className="io-income"><strong>{io_log.today_income > 0 ? <div><i className="icono-arrow2-down"></i>{io_log.today_income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_log.today_outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_log.today_outcome}</div>: '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
                     <p className="io-date">{yesterday_string}</p>
-                    <div className="io-income"><strong>{yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{yesterday_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{yesterday_outcome}</div> : '---'}</strong></div>
+                    <div className="io-income"><strong>{io_log.yesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.yesterday_income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_log.yesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.yesterday_outcome}</div> : '---'}</strong></div>
                   </div>
                   <div className="io-history-day">
                     <p className="io-date">{beforeYesterday_string}</p>
-                    <div className="io-income"><strong>{beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{beforeYesterday_income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{beforeYesterday_outcome}</div> : '---'}</strong></div>
+                    <div className="io-income"><strong>{io_log.beforeYesterday_income !=0 ? <div><i className="icono-arrow2-down"></i>{io_log.beforeYesterday_income}</div> : '---'}</strong></div>
+                    <div className="io-outcome"><strong>{io_log.beforeYesterday_outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_log.beforeYesterday_outcome}</div> : '---'}</strong></div>
                   </div>
                 </div>
               </Col>
@@ -167,13 +121,12 @@ const mapStateToProps = (state) => {
   return { 
     isLoading: state.products.isLoading, 
     product: state.products.selectedItem,
-    log: state.products.log
+    io_log: state.products.io_log
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({ 
   fetchProduct: (code) => dispatch(fetchProduct(code)),
-  fetchLog: () => dispatch(fetchLog())
 });
 
 

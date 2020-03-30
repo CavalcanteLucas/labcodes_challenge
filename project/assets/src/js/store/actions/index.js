@@ -33,12 +33,3 @@ export const fetchProduct = (code) => {
     apiCallFunction: () => fetchFromApi(`/api/inventory/${code}/`)
   };
 }
-
-export const fetchLog = () => dispatch => {
-  fetch("/api/inventory/log/")
-    .then(response => response.json())
-    .then(data => dispatch({
-      type: FETCH_IO,
-      log: data
-    }))
-  }
