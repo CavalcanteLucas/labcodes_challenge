@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 
 from inventory.models import Product, Log
 from inventory.serializers import ProductSerializer, QuantitySerializer, \
-                                  LogSerializer#, IOHistorySerializer
+                                  LogSerializer
 
 from datetime import date, timedelta
 
@@ -53,7 +53,6 @@ class ProductDetailEndpoint(RetrieveAPIView):
 
 
 class IOHistory(object):
-    # serializer_class = IOHistorySerializer
 
     def __init__(self,instance, no_of_days=1):
         the_date = date.today() - timedelta(days=no_of_days-1)
