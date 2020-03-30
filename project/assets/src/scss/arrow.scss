@@ -29,6 +29,7 @@
     }
     &[class*="-left"] {
         transform: rotate(-135deg);
+        margin-top: 10px;
         &[class*="-up"] {
             transform: rotate(-90deg);
         }
