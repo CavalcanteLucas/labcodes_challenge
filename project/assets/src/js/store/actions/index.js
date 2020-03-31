@@ -30,6 +30,6 @@ export const fetchProduct = (code) => {
       failure: FETCH_PRODUCT_FAILURE,
     },
     shouldDispatch: state => !state.products.selectedItem || (state.products.selectedItem.code !== code),
-    apiCallFunction: () => fetchFromApi(`/api/inventory/${code}/`)
+    apiCallFunction: () => fetchFromApi(`/api/inventory/${code}/?quantity=5`)
   };
 }

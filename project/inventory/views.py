@@ -41,7 +41,7 @@ class ProductDetailEndpoint(RetrieveAPIView):
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
-        quantity = request.GET.get('quantity', 3)
+        quantity = int(request.GET.get('quantity', 3))
         context = {
             'selectedItem': serializer.data,
             'io_history': self.get_io_history(instance, quantity)

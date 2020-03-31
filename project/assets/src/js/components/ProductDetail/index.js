@@ -29,18 +29,6 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
-
-      let io_history_rows = []
-      for(var item in io_history){
-        io_history_rows.push(
-          <div className="io-history-day" key={item}>
-            <p className="io-date">{io_history[item].date_string}</p>
-            <div className="io-income"><strong>{io_history[item].income > 0 ? <div><i className="icono-arrow2-down"></i>{io_history[item].income}</div> : '---'}</strong></div>
-            <div className="io-outcome"><strong>{io_history[item].outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_history[item].outcome}</div>: '---'}</strong></div>
-          </div>        
-        )
-      }
-
       return (
         <div id="product-detail">
           <Container>
@@ -78,7 +66,13 @@ class ProductsDetail extends React.Component {
                   <h1><strong>{product.available_quantity}</strong></h1>
                   <p className="separator"></p>
                   <h3 className="history"><strong>I/O History</strong></h3>
-                  { io_history_rows }
+                  { io_history.map( item => ( 
+                    <div className="io-history-day" key={item}>
+                      <p className="io-date">{item.date_string}</p>
+                      <div className="io-income"><strong>{item.income > 0 ? <div><i className="icono-arrow2-down"></i>{item.income}</div> : '---'}</strong></div>
+                      <div className="io-outcome"><strong>{item.outcome != 0 ? <div><i className="icono-arrow2-up"></i>{item.outcome}</div>: '---'}</strong></div>
+                    </div>
+                  )) }
                 </div>
               </Col>
             </Row>
