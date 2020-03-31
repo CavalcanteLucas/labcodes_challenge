@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { PongSpinner } from 'react-spinners-kit';
+import { PongSpinner, RainbowSpinner } from 'react-spinners-kit';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { fetchProduct, fetchLog } from '../../store/actions';
@@ -29,6 +29,18 @@ class ProductsDetail extends React.Component {
     }
 
     if (product) {
+
+      let io_history_rows = []
+      for(var item in io_history){
+        io_history_rows.push(
+          <div className="io-history-day">
+            <p className="io-date">{io_history[item].date_string}</p>
+            <div className="io-income"><strong>{io_history[item].income > 0 ? <div><i className="icono-arrow2-down"></i>{io_history[item].income}</div> : '---'}</strong></div>
+            <div className="io-outcome"><strong>{io_history[item].outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_history[item].outcome}</div>: '---'}</strong></div>
+          </div>        
+        )
+      }
+
       return (
         <div id="product-detail">
           <Container>
@@ -66,21 +78,7 @@ class ProductsDetail extends React.Component {
                   <h1><strong>{product.available_quantity}</strong></h1>
                   <p className="separator"></p>
                   <h3 className="history"><strong>I/O History</strong></h3>
-                  <div className="io-history-day">
-                    <p className="io-date">{io_history[0].date_string}</p>
-                    <div className="io-income"><strong>{io_history[0].income > 0 ? <div><i className="icono-arrow2-down"></i>{io_history[0].income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_history[0].outcome != 0 ? <div><i className="icono-arrow2-up"></i>{io_history[0].outcome}</div>: '---'}</strong></div>
-                  </div>
-                  <div className="io-history-day">
-                    <p className="io-date">{io_history[1].date_string}</p>
-                    <div className="io-income"><strong>{io_history[1].income !=0 ? <div><i className="icono-arrow2-down"></i>{io_history[1].income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_history[1].outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_history[1].outcome}</div> : '---'}</strong></div>
-                  </div>
-                  <div className="io-history-day">
-                    <p className="io-date">{io_history[2].date_string}</p>
-                    <div className="io-income"><strong>{io_history[2].income !=0 ? <div><i className="icono-arrow2-down"></i>{io_history[2].income}</div> : '---'}</strong></div>
-                    <div className="io-outcome"><strong>{io_history[2].outcome !=0 ? <div><i className="icono-arrow2-up"></i>{io_history[2].outcome}</div> : '---'}</strong></div>
-                  </div>
+                  { io_history_rows }
                 </div>
               </Col>
             </Row>
